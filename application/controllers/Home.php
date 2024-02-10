@@ -1,11 +1,45 @@
 <?php
-class Home extends CI_Controller {
+defined("BASEPATH") or exit("No direct script access allowed");
+
+class Home extends CI_Controller
+{
+        function __construct()
+        {
+                parent::__construct();
+                $this->load->model('auth');
+                // $this->auth->check_login();
+        }
 
         public function index()
         {
-                $data ['title'] = 'Home';
-                $this->load->view('templates/header', $data);
-		$this->load->view($page = 'pages/home');
-                $this->load->view('templates/footer');
-	}
+                $data['title'] = 'Home';
+                $this->load->database();
+
+                $query = $this->db->get('tb_productCategory');
+                if ($query) {
+                        $data['productcategories'] = $query->result_array();
+                } else {
+                        echo "Error retrieving data from the database.";
+                }
+
+                $query = $this->db->get('tb_product');
+                if ($query) {
+                        $data['products'] = $query->result_array();
+                } else {
+                        echo "Error retrieving data from the database.";
+                }
+
+                $query = $this->db->get('tb_store');
+                if ($query) {
+                        $data['storedatas'] = $query->result_array();
+                } else {
+                        echo "Error retrieving data from the database.";
+                }
+
+                $this->load->view('user/templates/header', $data);
+                $this->load->view('user/pages/home', $data);
+                $this->load->view('user/templates/footer');
+
+
+        }
 }
