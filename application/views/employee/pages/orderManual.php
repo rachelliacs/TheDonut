@@ -1,6 +1,6 @@
 <div>
-    <div class="card-add">
-        <form method="post" action="<?= base_url(); ?>admin/ordermanual/add" class="form formAdd">
+    <div id="add-popup" class="">
+        <form id="id" method="post" action="<?= base_url(); ?>admin/ordermanual/add" class="form formAdd">
             <div class="form-content-wrap">
                 <div class="card-header">
                     <h6>

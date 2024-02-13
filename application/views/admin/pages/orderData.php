@@ -12,7 +12,7 @@
                 <th scope="col">Date</th>
                 <th scope="col">Status Payment</th>
                 <th scope="col">Method Payment</th>
-                <th scope="col">Action</th>
+                <!-- <th scope="col">Action</th> -->
             </tr>
         </thead>
         <tbody>
@@ -39,7 +39,7 @@
                     <td>
                         <?php echo $order['orderMethod']; ?>
                     </td>
-                    <td>
+                    <!-- <td>
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                             <button onclick="confirmDeleteOrder(<?php echo $order['orderID']; ?>)" class="btn btn-danger">
                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
@@ -61,7 +61,7 @@
                                 </svg>
                             </button>
                         </div>
-                    </td>
+                    </td> -->
                 </tr>
             <?php endforeach; ?>
         </tbody>

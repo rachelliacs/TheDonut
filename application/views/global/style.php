@@ -26,4 +26,8 @@
 
 <!-- Local JS -->
 <script src="<?= base_url(); ?>assets/js/modernizr.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 <!--  -->

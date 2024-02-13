@@ -12,7 +12,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Phone</th>
-                <th scope="col">Action</th>
+                <!-- <th scope="col">Action</th> -->
             </tr>
         </thead>
         <tbody>
@@ -34,7 +34,7 @@
                     <td>
                         <?php echo $user['userPhone']; ?>
                     </td>
-                    <td>
+                    <!-- <td>
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                             <button onclick="confirmDeleteUser(<?php echo $user['userID']; ?>)" type="button"
                                 class="btn btn-danger">
@@ -57,7 +57,7 @@
                                 </svg>
                             </button>
                         </div>
-                    </td>
+                    </td> -->
                 </tr>
             <?php endforeach; ?>
         </tbody>

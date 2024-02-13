@@ -56,7 +56,7 @@ class OrderData extends CI_Controller
 
         $this->load->view('employee/templates/header', $data);
         $this->load->view('employee/templates/contentTop');
-        $this->load->view('admin/pages/orderData', $data);
+        $this->load->view('employee/pages/orderData', $data);
         $this->load->view('employee/templates/contentBottom');
         $this->load->view('admin/templates/footer');
     }

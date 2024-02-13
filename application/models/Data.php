@@ -1,25 +1,25 @@
 <?php
 class Data extends CI_Model
 {
-    public function getTotalRecords($table_name)
+    public function __construct()
     {
-        return $this->db->count_all($table_name);
+        parent::__construct();
     }
 
-    public function getData($id)
+    public function getAllData($table)
     {
-        // Fetch data based on $id
-        $query = $this->db->get_where('table_name', array('id' => $id));
-        return $query->row_array();
+        return $this->db->get($table)->result();
     }
 
-    public function updateData($table_name, $id, $field)
+    public function getDataById($table, $id)
     {
-        // Update data in the table
-        $data = array(
-            'field_name' => $field
-        );
-        $this->db->where('id', $id);
-        $this->db->update($table_name, $data);
+        return $this->db->get_where($table, array('storeID' => $id))->row();
     }
+
+    public function updateData($id, $data)
+    {
+        $this->db->where('storeID', $id);
+        $this->db->update('tb_store', $data);
+    }
+
 }

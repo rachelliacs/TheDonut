@@ -58,7 +58,7 @@ select {
     margin: 0px;
     padding: 12px 16px !important;
     border-radius: 4px;
-    border: none !important;
+    /* border: none !important; */
     background-color: white !important;
     color: black;
     font-size: x-small !important;
@@ -180,6 +180,11 @@ a.btn svg {
     text-transform: uppercase;
 }
 
+.btn-close {
+    font-size: 12px;
+    cursor: pointer;
+}
+
 /* NAVIGATION */
 .primary-nav {
     padding: 16px 0px;
@@ -257,10 +262,13 @@ a.btn svg {
     display: flex;
     flex-wrap: wrap;
 }
+form {
+    margin: 0;
+}
 .form {
     display: flex;
     border-radius: 8px;
-    margin: 0;
+    margin: 0px;
 }
 .form-input-group,
 .form-buttons {
@@ -287,7 +295,7 @@ a.btn svg {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 24px;
+    padding: 0;
     margin: 0 auto;
     min-width: 580px;
     gap: 24px;
@@ -321,6 +329,34 @@ a.btn svg {
 .form.formAdd select {
     border: 1px solid var(--accent-color) !important;
 }
+.popup-form {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 24px;
+    border: 1px solid #ccc;
+    border-radius: 16px;
+    z-index: 9999;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+.popup-form.show {
+    display: block !important;
+}
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 
 /* TABLE */
 .table {

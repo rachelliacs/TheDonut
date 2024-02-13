@@ -2,6 +2,7 @@
 </div>
 </section>
 <script>
+    // DELETES
     function confirmDeleteUser(userID) {
         if (confirm('Are you sure you want to delete this user?')) {
             // If user confirms, submit the form with the userID
@@ -62,4 +63,65 @@
             form.submit();
         }
     }
+    // EDITS
+    // Event listener for edit button click
+    $('.edit-btn').click(function () {
+        // Get data from the clicked edit button
+        var userID = $(this).data('userid');
+        var userName = $(this).data('username');
+        var userStatus = $(this).data('userstatus');
+        var userEmail = $(this).data('useremail');
+        var userPhone = $(this).data('userphone');
+        var storeID = $(this).data('storeid');
+        var storeName = $(this).data('storename');
+        var storeLogo = $(this).data('storelogo');
+        var storeDesc = $(this).data('storedesc');
+        var productID = $(this).data('productid');
+        var productName = $(this).data('productname');
+        var productStock = $(this).data('productstock');
+        var productCategoryName = $(this).data('productcategoryname');
+        var productPrice = $(this).data('productprice');
+        var productSellingPrice = $(this).data('productsellingprice');
+        var productCategoryID = $(this).data('productcategoryid');
+        var productCategoryName = $(this).data('productcategoryname');
+
+        // Set data to the form fields
+        $('#userid').val(userID);
+        $('#username').val(userName);
+        $('#userstatus').val(userStatus);
+        $('#useremail').val(userEmail);
+        $('#userphone').val(userPhone);
+        $('#storeid').val(storeID);
+        $('#storename').val(storeName);
+        $('#storelogo').val(storeLogo);
+        $('#storedesc').val(storeDesc);
+        $('#productid').val(productID);
+        $('#productname').val(productName);
+        $('#productstock').val(productStock);
+        $('#productcategoryname').val(productCategoryName);
+        $('#productprice').val(productPrice);
+        $('#productsellingprice').val(productSellingPrice);
+        $('#productcategoryid').val(productCategoryID);
+        $('#productcategoryname').val(productCategoryName);
+
+        // Show the popup form
+        $('#edit-popup').show();
+    });
+
+    $('.add-btn').click(function () {
+        // Show the popup form
+        $('#add-popup').show();
+    });
+
+    // Event listener for close button click
+    $('#close-edit-popup').click(function () {
+        // Hide the popup form
+        $('#edit-popup').hide();
+    });
+
+    // Event listener for close button click
+    $('#close-add-popup').click(function () {
+        // Hide the popup form
+        $('#add-popup').hide();
+    });
 </script>

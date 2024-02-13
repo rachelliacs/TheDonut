@@ -10,7 +10,7 @@
 						<div class="sidebar-content">
 							<ul id="sidebar-nav" class="sidebar-nav flex-column accordion">
 								<div class="nav-item">
-									<a class="nav-link" href="dashboard">
+									<a class="nav-link" href="<?= base_url(); ?>admin/dashboard">
 										<svg width="20" height="20" viewBox="0 0 32 32" fill="none"
 											xmlns="http://www.w3.org/2000/svg">
 											<path
@@ -19,7 +19,7 @@
 										</svg>Dashboard</a>
 								</div>
 								<div class="nav-item">
-									<a class="nav-link" href="storeData">
+									<a class="nav-link" href="<?= base_url(); ?>admin/storeData">
 										<svg width="20" height="20" viewBox="0 0 32 32" fill="none"
 											xmlns="http://www.w3.org/2000/svg">
 											<path
@@ -29,7 +29,7 @@
 										Store</a>
 								</div>
 								<div class="nav-item">
-									<a class="nav-link" href="productData">
+									<a class="nav-link" href="<?= base_url(); ?>admin/productData">
 										<svg width="20" height="20" viewBox="0 0 36 36" fill="none"
 											xmlns="http://www.w3.org/2000/svg">
 											<path
@@ -38,7 +38,7 @@
 										</svg>Product</a>
 								</div>
 								<div class="nav-item">
-									<a class="nav-link" href="productCategory">
+									<a class="nav-link" href="<?= base_url(); ?>admin/productCategory">
 										<svg width="20" height="20" viewBox="0 0 32 32" fill="none"
 											xmlns="http://www.w3.org/2000/svg">
 											<path
@@ -48,7 +48,7 @@
 										Product Category</a>
 								</div>
 								<div class="nav-item">
-									<a class="nav-link" href="productStock">
+									<a class="nav-link" href="<?= base_url(); ?>admin/productStock">
 										<svg width="20" height="20" viewBox="0 0 32 29" fill="none"
 											xmlns="http://www.w3.org/2000/svg">
 											<path
@@ -59,7 +59,7 @@
 								</div>
 								<li class="nav-item">
 									<a class="nav-link" data-bs-target="#tables-nav" data-bs-toggle="collapse"
-										href="userData" aria-expanded="false">
+										href="<?= base_url(); ?>admin/userData" aria-expanded="false">
 										<svg width="20" height="20" viewBox="0 0 32 32" fill="none"
 											xmlns="http://www.w3.org/2000/svg">
 											<path
@@ -72,7 +72,7 @@
 									<ul id="tables-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav"
 										style="">
 										<li>
-											<a class="nav-link" href="userData">
+											<a class="nav-link" href="<?= base_url(); ?>admin/userData">
 												<svg width="20" height="20" viewBox="0 0 32 32" fill="none"
 													xmlns="http://www.w3.org/2000/svg">
 													<path
@@ -85,7 +85,7 @@
 											</a>
 										</li>
 										<li>
-											<a class="nav-link" href="userDataCustomer">
+											<a class="nav-link" href="<?= base_url(); ?>admin/userDataCustomer">
 												<svg width="20" height="20" viewBox="0 0 32 32" fill="none"
 													xmlns="http://www.w3.org/2000/svg">
 													<path
@@ -98,7 +98,7 @@
 											</a>
 										</li>
 										<li>
-											<a class="nav-link" href="userDataAdmin">
+											<a class="nav-link" href="<?= base_url(); ?>admin/userDataAdmin">
 												<svg width="20" height="20" viewBox="0 0 32 32" fill="none"
 													xmlns="http://www.w3.org/2000/svg">
 													<path
@@ -111,7 +111,7 @@
 											</a>
 										</li>
 										<li>
-											<a class="nav-link" href="userDataEmployee">
+											<a class="nav-link" href="<?= base_url(); ?>admin/userDataEmployee">
 												<svg width="20" height="20" viewBox="0 0 32 32" fill="none"
 													xmlns="http://www.w3.org/2000/svg">
 													<path
@@ -126,7 +126,7 @@
 									</ul>
 								</li>
 								<div class="nav-item">
-									<a class="nav-link" href="orderData">
+									<a class="nav-link" href="<?= base_url(); ?>admin/orderData">
 										<svg width="20" height="20" viewBox="0 0 32 32" fill="none"
 											xmlns="http://www.w3.org/2000/svg">
 											<path
@@ -135,7 +135,7 @@
 										</svg>Order</a>
 								</div>
 								<div class="nav-item">
-									<a class="nav-link" href="salesData">
+									<a class="nav-link" href="<?= base_url(); ?>admin/salesData">
 										<svg width="20" height="20" viewBox="0 0 32 32" fill="none"
 											xmlns="http://www.w3.org/2000/svg">
 											<path
