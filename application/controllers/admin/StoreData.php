@@ -40,7 +40,7 @@ class StoreData extends CI_Controller
             'storeLogo' => $this->input->post('storelogo'),
             'storeDesc' => $this->input->post('storedesc'),
         );
-        $this->Data->updateData($table, $id, $data);
+        $this->Data->updateData($table, 'storeID', $id, $data);
         if ($this) {
             redirect('admin/storeData');
         } else {

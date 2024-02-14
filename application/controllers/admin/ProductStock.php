@@ -37,4 +37,20 @@ class ProductStock extends CI_Controller
         $this->load->view('admin/templates/contentBottom');
         $this->load->view('admin/templates/footer');
     }
+
+    public function update()
+    {
+        $id = $this->input->post('productid');
+        $table = 'tb_product';
+        $data = array(
+            'productName' => $this->input->post('productname'),
+            'productStock' => $this->input->post('productstock')
+        );
+        $this->Data->updateData($table, 'productID', $id, $data);
+        if ($this) {
+            redirect('admin/productStock');
+        } else {
+            echo "Update failed.";
+        }
+    }
 }

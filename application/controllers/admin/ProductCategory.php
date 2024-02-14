@@ -47,18 +47,21 @@ class ProductCategory extends CI_Controller
         redirect('admin/productCategory');
     }
 
-    public function edit($productid)
+    public function update()
     {
-        $data['productcategory'] = $this->Data->getData($productid);
-        $this->load->view('admin/productCategory', $data);
+        $id = $this->input->post('productcategoryid');
+        $table = 'tb_productCategory';
+        $data = array(
+            'productCategoryName' => $this->input->post('productcategoryname')
+        );
+        $this->Data->updateData($table, 'productCategoryID', $id, $data);
+        if ($this) {
+            redirect('admin/productCategory');
+        } else {
+            echo "Update failed.";
+        }
     }
 
-    public function update($productid)
-    {
-        $productname = $this->input->post('productname');
-        $this->Data->updateData('tb_product', $productid, $productname);
-        redirect('admin/productCategory');
-    }
 
     public function delete()
     {

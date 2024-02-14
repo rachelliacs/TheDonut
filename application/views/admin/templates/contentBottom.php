@@ -79,7 +79,6 @@
         var productID = $(this).data('productid');
         var productName = $(this).data('productname');
         var productStock = $(this).data('productstock');
-        var productCategoryName = $(this).data('productcategoryname');
         var productPrice = $(this).data('productprice');
         var productSellingPrice = $(this).data('productsellingprice');
         var productCategoryID = $(this).data('productcategoryid');
@@ -98,7 +97,6 @@
         $('#productid').val(productID);
         $('#productname').val(productName);
         $('#productstock').val(productStock);
-        $('#productcategoryname').val(productCategoryName);
         $('#productprice').val(productPrice);
         $('#productsellingprice').val(productSellingPrice);
         $('#productcategoryid').val(productCategoryID);

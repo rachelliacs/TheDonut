@@ -11,16 +11,17 @@ class Data extends CI_Model
         return $this->db->get($table)->result();
     }
 
-    public function getDataById($table, $id)
+    public function getDataById($table, $idField, $idValue)
     {
-        return $this->db->get_where($table, array($id => $id))->row();
+        return $this->db->get_where($table, array($idField => $idValue))->row();
     }
 
-    public function updateData($table, $id, $data)
+    public function updateData($table, $idField, $idValue, $data)
     {
-        $this->db->where($id, $id);
+        $this->db->where($idField, $idValue);
         $this->db->update($table, $data);
     }
+
 
     public function getStoreData($table)
     {

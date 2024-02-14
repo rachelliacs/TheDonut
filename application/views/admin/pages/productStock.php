@@ -58,6 +58,9 @@
                 </h6>
                 <div class="form-input-group row">
                     <div class="form-input">
+                        <input type="hidden" name="productid" id="productid" value="">
+                    </div>
+                    <div class="form-input">
                         <label for="productname" class="form-label">Product Name</label>
                         <input type="text" name="productname" id="productname" class="form-control"
                             placeholder="Enter product name">

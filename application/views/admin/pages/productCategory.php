@@ -71,7 +71,10 @@
                     <?= $title ?>
                     <div class="btn-close" id="close-edit-popup"></div>
                 </h6>
-                <div class="form-input-group row">
+                <div class="form-input-group">
+                    <div class="form-input">
+                        <input type="hidden" name="productcategoryid" id="productcategoryid" value="">
+                    </div>
                     <div class="form-input">
                         <label for="productcategoryname" class="form-label">Product Category Name</label>
                         <input type="text" name="productcategoryname" id="productcategoryname" class="form-control"
@@ -99,7 +102,7 @@
                     <?= $title ?>
                     <div class="btn-close" id="close-add-popup"></div>
                 </h6>
-                <div class="form-input-group row">
+                <div class="form-input-group">
                     <div class="form-input">
                         <label for="productcategoryname" class="form-label">Product Category Name</label>
                         <input type="text" name="productcategoryname" id="productcategoryname" class="form-control"
