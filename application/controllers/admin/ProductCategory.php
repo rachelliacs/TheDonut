@@ -13,18 +13,20 @@ class ProductCategory extends CI_Controller
     public function index()
     {
         $data['title'] = 'Product Category';
+        $table = 'tb_store';
+
         $this->load->database();
+
+        $data['storedatas'] = $this->Data->getStoreData($table);
+        $StoreName = '';
+        if (!empty($data['storedatas'])) {
+            $StoreName = $data['storedatas'][0]['storeName'];
+        }
+        $data['StoreName'] = $StoreName;
 
         $query = $this->db->get('tb_productCategory');
         if ($query) {
             $data['productcategories'] = $query->result_array();
-        } else {
-            echo "Error retrieving data from the database.";
-        }
-
-        $query = $this->db->get('tb_store');
-        if ($query) {
-            $data['storedatas'] = $query->result_array();
         } else {
             echo "Error retrieving data from the database.";
         }

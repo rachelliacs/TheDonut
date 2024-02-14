@@ -7,20 +7,23 @@ class Dashboard extends CI_Controller
         {
                 parent::__construct();
                 $this->load->model('auth');
-                // $this->auth->check_login();
+                $this->load->model('Data');
         }
 
         public function index()
         {
                 $data['title'] = 'Dashboard';
+                $table = 'tb_store';
+
                 $this->load->database();
 
-                $query = $this->db->get('tb_store');
-                if ($query) {
-                        $data['storedatas'] = $query->result_array();
-                } else {
-                        echo "Error retrieving data from the database.";
+                $data['storedatas'] = $this->Data->getStoreData($table);
+                $StoreName = '';
+                if (!empty($data['storedatas'])) {
+                        $StoreName = $data['storedatas'][0]['storeName'];
                 }
+                $data['StoreName'] = $StoreName;
+
                 $this->load->view('admin/templates/header', $data);
                 $this->load->view('admin/templates/contentTop');
                 $this->load->view('admin/pages/dashboard');

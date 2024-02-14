@@ -14,15 +14,15 @@ class StoreData extends CI_Controller
     {
         $data['title'] = 'Store';
         $table = 'tb_store';
-        $id = 'storeID';
 
         $this->load->database();
-        $query = $this->db->get($table);
-        if ($query) {
-            $data['storedatas'] = $query->result_array();
-        } else {
-            echo "Error retrieving data from the database.";
+
+        $data['storedatas'] = $this->Data->getStoreData($table);
+        $StoreName = '';
+        if (!empty($data['storedatas'])) {
+            $StoreName = $data['storedatas'][0]['storeName'];
         }
+        $data['StoreName'] = $StoreName;
 
         $this->load->view('admin/templates/header', $data);
         $this->load->view('admin/templates/contentTop');
@@ -33,13 +33,14 @@ class StoreData extends CI_Controller
 
     public function update()
     {
-        $id = $this->input->post('storeID');
+        $id = $this->input->post('storeid');
+        $table = 'tb_store';
         $data = array(
             'storeName' => $this->input->post('storename'),
             'storeLogo' => $this->input->post('storelogo'),
             'storeDesc' => $this->input->post('storedesc'),
         );
-        $this->Data->updateData($id, $data);
+        $this->Data->updateData($table, $id, $data);
         if ($this) {
             redirect('admin/storeData');
         } else {
