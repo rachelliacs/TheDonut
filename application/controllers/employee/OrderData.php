@@ -6,13 +6,23 @@ class OrderData extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('auth');
+        $this->load->model('Auth');
+        $this->load->model('Data');
     }
 
     public function index()
     {
         $data['title'] = 'Order';
+        $table = 'tb_store';
+
         $this->load->database();
+
+        $data['storedatas'] = $this->Data->getStoreData($table);
+        $StoreName = '';
+        if (!empty($data['storedatas'])) {
+            $StoreName = $data['storedatas'][0]['storeName'];
+        }
+        $data['StoreName'] = $StoreName;
 
         $query = $this->db->get('tb_sales');
         if ($query) {
@@ -43,13 +53,6 @@ class OrderData extends CI_Controller
         $query = $this->db->get('tb_user');
         if ($query) {
             $data['users'] = $query->result_array();
-        } else {
-            echo "Error retrieving data from the database.";
-        }
-
-        $query = $this->db->get('tb_store');
-        if ($query) {
-            $data['storedatas'] = $query->result_array();
         } else {
             echo "Error retrieving data from the database.";
         }

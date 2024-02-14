@@ -60,7 +60,7 @@
                 </h6>
                 <div class="form-input-group">
                     <div class="form-input">
-                        <input type="hidden" name="storeid" id="storeid" class="form-control">
+                        <input type="hidden" name="storeid" id="storeid" value="">
                     </div>
                     <div class="form-input">
                         <label for="storename" class="form-label">Store Name</label>

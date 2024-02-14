@@ -3,18 +3,27 @@ defined("BASEPATH") or exit("No direct script access allowed");
 
 class Login extends CI_Controller
 {
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Auth');
+        $this->load->model('Data');
+    }
 
     public function index()
     {
         $data['title'] = 'Login';
+        $table = 'tb_store';
+
         $this->load->database();
 
-        $query = $this->db->get('tb_store');
-        if ($query) {
-            $data['storedatas'] = $query->result_array();
-        } else {
-            echo "Error retrieving data from the database.";
+        $data['storedatas'] = $this->Data->getStoreData($table);
+        $StoreName = '';
+        if (!empty($data['storedatas'])) {
+            $StoreName = $data['storedatas'][0]['storeName'];
         }
+        $data['StoreName'] = $StoreName;
+
         $this->load->view('employee/templates/header', $data);
         $this->load->view('employee/pages/login');
     }

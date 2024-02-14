@@ -6,13 +6,23 @@ class OrderManual extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('auth');
+        $this->load->model('Auth');
+        $this->load->model('Data');
     }
 
     public function index()
     {
         $data['title'] = 'Order Manual';
+        $table = 'tb_store';
+
         $this->load->database();
+
+        $data['storedatas'] = $this->Data->getStoreData($table);
+        $StoreName = '';
+        if (!empty($data['storedatas'])) {
+            $StoreName = $data['storedatas'][0]['storeName'];
+        }
+        $data['StoreName'] = $StoreName;
 
         $query = $this->db->get('tb_user');
         if ($query) {
@@ -46,13 +56,6 @@ class OrderManual extends CI_Controller
         $ordermethods = explode("','", preg_replace("/(enum|set)\('(.+?)'\)/", "\\2", $row->Type));
         // Pass enum values to view
         $data['ordermethods'] = $ordermethods;
-
-        $query = $this->db->get('tb_store');
-        if ($query) {
-            $data['storedatas'] = $query->result_array();
-        } else {
-            echo "Error retrieving data from the database.";
-        }
 
         $this->load->view('employee/templates/header', $data);
         $this->load->view('employee/templates/contentTop');

@@ -7,7 +7,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <head>
     <meta charset="utf-8">
     <title>
-        <?php echo $title ?> | Employee TheDonut
+        <?php echo $title ?> | Employee
+        <?php echo $StoreName ?>
     </title>
     <!-- START:: STYLES -->
     <?php $this->load->view('global/style') ?>
