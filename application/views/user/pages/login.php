@@ -1,4 +1,4 @@
-<div class="section padding-small">
+<div class="section section-auth padding-small">
     <div class="container">
         <?php
         if ($this->session->flashdata('error') != '') {
@@ -14,7 +14,7 @@
             echo '</div>';
         }
         ?>
-        <form method="post" action="<?= base_url(); ?>login/process" class="form">
+        <form method="post" action="<?= base_url(); ?>user/login/process" class="form">
             <div class="form-content-wrap">
                 <h1>Login</h1>
                 <div class="form-input-group">
@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-buttons">
                     <button type="submit" class="btn btn-primary">Login</button>
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <a href="<?= base_url(); ?>register" class="btn btn-primary">Register</a>
                 </div>
             </div>
         </form>

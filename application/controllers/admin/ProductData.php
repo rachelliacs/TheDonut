@@ -55,10 +55,30 @@ class ProductData extends CI_Controller
             'productCategoryID' => $this->input->post('productcategoryid'),
             'productImage' => 'thedonut-product(1).png',
             'productPrice' => $this->input->post('productprice'),
-            'productSellingPrice' => $this->input->post('productsellingprice')
+            'productSellingPrice' => $this->input->post('productsellingprice'),
+            'productStock' => $this->input->post('productstock'),
         );
         $this->db->insert('tb_product', $data);
         redirect('admin/productData');
+    }
+
+    public function update()
+    {
+        $id = $this->input->post('productid');
+        $table = 'tb_product';
+        $data = array(
+            'productName' => $this->input->post('productname'),
+            'productCategoryID' => $this->input->post('productcategoryid'),
+            'productPrice' => $this->input->post('productprice'),
+            'productSellingPrice' => $this->input->post('productsellingprice'),
+            'productStock' => $this->input->post('productstock'),
+        );
+        $this->Data->updateData($table, 'productID', $id, $data);
+        if ($this) {
+            redirect('admin/productData');
+        } else {
+            echo "Update failed.";
+        }
     }
 
     public function delete()

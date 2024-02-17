@@ -37,7 +37,7 @@
 										</svg>
 										Product Category</a>
 								</div>
-								<div class="nav-item">
+								<!-- <div class="nav-item">
 									<a class="nav-link" href="productStock">
 										<svg width="20" height="20" viewBox="0 0 32 29" fill="none"
 											xmlns="http://www.w3.org/2000/svg">
@@ -46,7 +46,7 @@
 												fill="white" />
 										</svg>
 										Product Stock</a>
-								</div>
+								</div> -->
 								<div class="nav-item">
 									<a class="nav-link" href="orderdata">
 										<svg width="20" height="20" viewBox="0 0 32 29" fill="none"

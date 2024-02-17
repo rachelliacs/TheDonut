@@ -1,40 +1,16 @@
-<div>
+<div class="admin-list">
     <div class="card-header">
-        <h4>Product Category List</h4>
-        <!-- <a href="#" class="btn btn-primary"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
+        <h4>
+            <?= $title ?> List
+        </h4>
+        <button class="btn btn-primary add-btn">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M14 26.6663C14 27.1968 14.2107 27.7055 14.5858 28.0806C14.9608 28.4556 15.4695 28.6663 16 28.6663C16.5304 28.6663 17.0391 28.4556 17.4142 28.0806C17.7893 27.7055 18 27.1968 18 26.6663V17.9997H26.6666C27.1971 17.9997 27.7058 17.789 28.0809 17.4139C28.4559 17.0388 28.6666 16.5301 28.6666 15.9997C28.6666 15.4692 28.4559 14.9605 28.0809 14.5855C27.7058 14.2104 27.1971 13.9997 26.6666 13.9997H18V5.33301C18 4.80257 17.7893 4.29387 17.4142 3.91879C17.0391 3.54372 16.5304 3.33301 16 3.33301C15.4695 3.33301 14.9608 3.54372 14.5858 3.91879C14.2107 4.29387 14 4.80257 14 5.33301V13.9997H5.33331C4.80288 13.9997 4.29417 14.2104 3.9191 14.5855C3.54403 14.9605 3.33331 15.4692 3.33331 15.9997C3.33331 16.5301 3.54403 17.0388 3.9191 17.4139C4.29417 17.789 4.80288 17.9997 5.33331 17.9997H14V26.6663Z"
-                    fill="white" />
+                    fill="white"></path>
             </svg>
-            New
-            <?= $title; ?>
-        </a> -->
-    </div>
-    <div class="card-add">
-        <form method="post" action="<?= base_url(); ?>admin/productcategory/add" class="form formAdd">
-            <div class="form-content-wrap">
-                <h1>Add new
-                    <?= $title ?>
-                </h1>
-                <div class="form-input-group row">
-                    <div class="form-input col-lg-3">
-                        <label for="productcategoryname" class="form-label">Product Category Name</label>
-                        <input type="text" name="productcategoryname" id="productcategoryname" class="form-control"
-                            placeholder="Enter new category name">
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary"><svg width="32" height="32" viewBox="0 0 32 32"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M14 26.6663C14 27.1968 14.2107 27.7055 14.5858 28.0806C14.9608 28.4556 15.4695 28.6663 16 28.6663C16.5304 28.6663 17.0391 28.4556 17.4142 28.0806C17.7893 27.7055 18 27.1968 18 26.6663V17.9997H26.6666C27.1971 17.9997 27.7058 17.789 28.0809 17.4139C28.4559 17.0388 28.6666 16.5301 28.6666 15.9997C28.6666 15.4692 28.4559 14.9605 28.0809 14.5855C27.7058 14.2104 27.1971 13.9997 26.6666 13.9997H18V5.33301C18 4.80257 17.7893 4.29387 17.4142 3.91879C17.0391 3.54372 16.5304 3.33301 16 3.33301C15.4695 3.33301 14.9608 3.54372 14.5858 3.91879C14.2107 4.29387 14 4.80257 14 5.33301V13.9997H5.33331C4.80288 13.9997 4.29417 14.2104 3.9191 14.5855C3.54403 14.9605 3.33331 15.4692 3.33331 15.9997C3.33331 16.5301 3.54403 17.0388 3.9191 17.4139C4.29417 17.789 4.80288 17.9997 5.33331 17.9997H14V26.6663Z"
-                            fill="white" />
-                    </svg>
-                    Add
-                    <?= $title; ?>
-                </button>
-            </div>
-        </form>
+            <?= $title ?>
+        </button>
     </div>
     <table class="table">
         <thead class="table-light">
@@ -56,7 +32,9 @@
                     </td>
                     <td>
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <button type="button" class="btn btn-danger">
+                            <button
+                                onclick="confirmDeleteProductCategory(<?php echo $productcategory['productCategoryID']; ?>)"
+                                class="btn btn-danger">
                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -64,7 +42,9 @@
                                         fill="white" />
                                 </svg>
                             </button>
-                            <button type="button" class="btn btn-primary">
+                            <button data-productcategoryid="<?php echo $productcategory['productCategoryID']; ?>"
+                                data-productcategoryname="<?php echo $productcategory['productCategoryName']; ?>"
+                                class="btn btn-success edit-btn">
                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -81,4 +61,65 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+    <!-- POPUP FORM: EDIT -->
+    <div id="edit-popup" class="popup-form">
+        <form id="edit-form" method="post" action="<?php echo base_url('employee/ProductCategory/update'); ?>"
+            class="form formAdd">
+            <div class="form-content-wrap">
+                <h6 class="card-header">
+                    Update
+                    <?= $title ?>
+                    <div class="btn-close" id="close-edit-popup"></div>
+                </h6>
+                <div class="form-input-group">
+                    <div class="form-input">
+                        <input type="hidden" name="productcategoryid" id="productcategoryid" value="">
+                    </div>
+                    <div class="form-input">
+                        <label for="productcategoryname" class="form-label">Product Category Name</label>
+                        <input type="text" name="productcategoryname" id="productcategoryname" class="form-control"
+                            placeholder="Enter new category name">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary"><svg width="32" height="32" viewBox="0 0 32 32"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M14 26.6663C14 27.1968 14.2107 27.7055 14.5858 28.0806C14.9608 28.4556 15.4695 28.6663 16 28.6663C16.5304 28.6663 17.0391 28.4556 17.4142 28.0806C17.7893 27.7055 18 27.1968 18 26.6663V17.9997H26.6666C27.1971 17.9997 27.7058 17.789 28.0809 17.4139C28.4559 17.0388 28.6666 16.5301 28.6666 15.9997C28.6666 15.4692 28.4559 14.9605 28.0809 14.5855C27.7058 14.2104 27.1971 13.9997 26.6666 13.9997H18V5.33301C18 4.80257 17.7893 4.29387 17.4142 3.91879C17.0391 3.54372 16.5304 3.33301 16 3.33301C15.4695 3.33301 14.9608 3.54372 14.5858 3.91879C14.2107 4.29387 14 4.80257 14 5.33301V13.9997H5.33331C4.80288 13.9997 4.29417 14.2104 3.9191 14.5855C3.54403 14.9605 3.33331 15.4692 3.33331 15.9997C3.33331 16.5301 3.54403 17.0388 3.9191 17.4139C4.29417 17.789 4.80288 17.9997 5.33331 17.9997H14V26.6663Z"
+                            fill="white" />
+                    </svg>
+                    Update
+                    <?= $title; ?>
+                </button>
+            </div>
+        </form>
+    </div>
+    <!-- POPUP FORM: ADD -->
+    <div id="add-popup" class="popup-form">
+        <form id="add-form" method="post" action="<?= base_url(); ?>employee/ProductCategory/add" class="form formAdd">
+            <div class="form-content-wrap">
+                <h6 class="card-header">
+                    Add New
+                    <?= $title ?>
+                    <div class="btn-close" id="close-add-popup"></div>
+                </h6>
+                <div class="form-input-group">
+                    <div class="form-input">
+                        <label for="productcategoryname" class="form-label">Product Category Name</label>
+                        <input type="text" name="productcategoryname" id="productcategoryname" class="form-control"
+                            placeholder="Enter new category name">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary"><svg width="32" height="32" viewBox="0 0 32 32"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M14 26.6663C14 27.1968 14.2107 27.7055 14.5858 28.0806C14.9608 28.4556 15.4695 28.6663 16 28.6663C16.5304 28.6663 17.0391 28.4556 17.4142 28.0806C17.7893 27.7055 18 27.1968 18 26.6663V17.9997H26.6666C27.1971 17.9997 27.7058 17.789 28.0809 17.4139C28.4559 17.0388 28.6666 16.5301 28.6666 15.9997C28.6666 15.4692 28.4559 14.9605 28.0809 14.5855C27.7058 14.2104 27.1971 13.9997 26.6666 13.9997H18V5.33301C18 4.80257 17.7893 4.29387 17.4142 3.91879C17.0391 3.54372 16.5304 3.33301 16 3.33301C15.4695 3.33301 14.9608 3.54372 14.5858 3.91879C14.2107 4.29387 14 4.80257 14 5.33301V13.9997H5.33331C4.80288 13.9997 4.29417 14.2104 3.9191 14.5855C3.54403 14.9605 3.33331 15.4692 3.33331 15.9997C3.33331 16.5301 3.54403 17.0388 3.9191 17.4139C4.29417 17.789 4.80288 17.9997 5.33331 17.9997H14V26.6663Z"
+                            fill="white" />
+                    </svg>
+                    Add
+                    <?= $title; ?>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
 </div>

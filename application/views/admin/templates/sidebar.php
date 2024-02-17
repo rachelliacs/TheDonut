@@ -47,7 +47,7 @@
 										</svg>
 										Product Category</a>
 								</div>
-								<div class="nav-item">
+								<!-- <div class="nav-item">
 									<a class="nav-link" href="<?= base_url(); ?>admin/productStock">
 										<svg width="20" height="20" viewBox="0 0 32 29" fill="none"
 											xmlns="http://www.w3.org/2000/svg">
@@ -56,7 +56,7 @@
 												fill="white" />
 										</svg>
 										Product Stock</a>
-								</div>
+								</div> -->
 								<li class="nav-item">
 									<a class="nav-link" data-bs-target="#tables-nav" data-bs-toggle="collapse"
 										href="<?= base_url(); ?>admin/userData" aria-expanded="false">

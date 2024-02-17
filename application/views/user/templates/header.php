@@ -18,7 +18,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <body>
     <nav class="primary-nav">
         <div class=" container">
-            <div class="row d-flex align-items-center">
+            <div class="row d-flex align-items-center justify-content-between">
                 <div class="col-lg-2 col-md-2">
                     <div class="main-logo">
                         <a href="<?= base_url(); ?>">
@@ -30,6 +30,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <?php endif; ?>
                         </a>
                     </div>
+                </div>
+                <div class="col-lg-2 col-md-2">
+                    <div class="form-buttons">
+                        <a href="<?= base_url(); ?>login" class="btn btn-primary">Login</a>
+                        <a href="<?= base_url(); ?>register" class="btn btn-primary">Register</a>
+                    </div>
+
                 </div>
             </div>
         </div>
