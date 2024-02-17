@@ -1,6 +1,6 @@
 <div>
-    <div id="add-popup" class="">
-        <form id="id" method="post" action="<?= base_url(); ?>admin/ordermanual/add" class="form formAdd">
+    <div id="add-popup" class="card-add">
+        <form id="id" method="post" action="<?= base_url(); ?>employee/ordermanual/add" class="form formAdd">
             <div class="form-content-wrap">
                 <div class="card-header">
                     <h6>
@@ -9,11 +9,11 @@
                 </div>
                 <div class="form-input-group row">
                     <div class="form-input">
-                        <label for="username" class="form-label">Customer Name</label>
-                        <select name="username" id="username" class="form-control">
+                        <label for="userid" class="form-label">Customer Name</label>
+                        <select name="userid" id="userid" class="form-control">
                             <?php foreach ($users as $user): ?>
                                 <?php if ($user['userStatus'] == 'customer'): ?>
-                                    <option value="<?php echo $user['userName']; ?>">
+                                    <option value="<?php echo $user['userID']; ?>">
                                         <?php echo $user['userName']; ?>
                                     </option>
                                 <?php endif; ?>
@@ -44,12 +44,13 @@
                         <label for="">Order</label>
                         <?php foreach ($products as $product): ?>
                             <div class="form-input-radio">
-                                <input type="radio" name="<?= $product['productID']; ?>" id="<?= $product['productID']; ?>"
-                                    class="form-control">
-                                <label for="<?= $product['productID']; ?>" class="form-label">
+                                <input type="checkbox" name="products[]" id="product_<?= $product['productID']; ?>"
+                                    class="form-input-radio" value="<?= $product['productID']; ?>">
+                                <label for="product_<?= $product['productID']; ?>" class="form-label">
                                     <?= $product['productName']; ?>
                                 </label>
-                                <input type="number" name="orderTotalItem" id="orderTotalItem" min="0"
+                                <input type="number" name="orderTotalItem[]"
+                                    id="orderTotalItem_<?= $product['productID']; ?>" min="0"
                                     class="form-input-number form-control">
                             </div>
                         <?php endforeach; ?>

@@ -3,7 +3,9 @@
         <div class="row d-flex flex-wrap">
             <div class="col-lg-4">
                 <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
-                    <h5>TheDonut</h5>
+                    <h5>
+                        <?php echo $StoreName ?>
+                    </h5>
                 </a>
                 <p class="text-body-secondary">TheDonuts is the best donut restaurant in the Malang area. </p>
             </div>

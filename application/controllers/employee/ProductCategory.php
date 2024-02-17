@@ -33,7 +33,7 @@ class ProductCategory extends CI_Controller
 
         $this->load->view('employee/templates/header', $data);
         $this->load->view('employee/templates/contentTop');
-        $this->load->view('admin/pages/productCategory', $data);
+        $this->load->view('employee/pages/productCategory', $data);
         $this->load->view('employee/templates/contentBottom');
     }
 
@@ -44,5 +44,20 @@ class ProductCategory extends CI_Controller
         );
         $this->db->insert('tb_productCategory', $data);
         redirect('employee/productCategory');
+    }
+
+    public function update()
+    {
+        $id = $this->input->post('productcategoryid');
+        $table = 'tb_productCategory';
+        $data = array(
+            'productCategoryName' => $this->input->post('productcategoryname')
+        );
+        $this->Data->updateData($table, 'productCategoryID', $id, $data);
+        if ($this) {
+            redirect('employee/productCategory');
+        } else {
+            echo "Update failed.";
+        }
     }
 }

@@ -62,4 +62,22 @@ class UserDataEmployee extends CI_Controller
         $this->db->insert('tb_user', $data);
         redirect('admin/userDataEmployee');
     }
+
+    public function update()
+    {
+        $id = $this->input->post('userid');
+        $table = 'tb_user';
+        $data = array(
+            'userName' => $this->input->post('username'),
+            'userEmail' => $this->input->post('useremail'),
+            'userPhone' => $this->input->post('userphone'),
+            'userPassword' => $this->input->post('userpassword'),
+        );
+        $this->Data->updateData($table, 'userID', $id, $data);
+        if ($this) {
+            redirect('admin/userDataEmployee');
+        } else {
+            echo "Update failed.";
+        }
+    }
 }

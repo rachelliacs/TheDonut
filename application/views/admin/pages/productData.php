@@ -20,6 +20,7 @@
                 <th scope="col">Category</th>
                 <th scope="col">Purchase Price</th>
                 <th scope="col">Selling Price</th>
+                <th scope="col">Stock</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -42,6 +43,9 @@
                         <?php echo $product['productSellingPrice']; ?>0 IDR
                     </td>
                     <td>
+                        <?php echo $product['productStock']; ?>
+                    </td>
+                    <td>
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                             <button onclick="confirmDeleteProduct(<?php echo $product['productID']; ?>)"
                                 class="btn btn-danger">
@@ -54,9 +58,10 @@
                             </button>
                             <button data-productid="<?php echo $product['productID']; ?>"
                                 data-productname="<?php echo $product['productName']; ?>"
-                                data-productcategoryname="<?php echo $product['productCategoryName']; ?>"
+                                data-productcategoryid="<?php echo $product['productCategoryID']; ?>"
                                 data-productprice="<?php echo $product['productPrice']; ?>"
                                 data-productsellingprice="<?php echo $product['productSellingPrice']; ?>"
+                                data-productstock="<?php echo $product['productStock']; ?>"
                                 class="btn btn-success edit-btn">
                                 <svg width=" 32" height="32" viewBox="0 0 32 32" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -85,9 +90,12 @@
                 </h6>
                 <div class="form-input-group row">
                     <div class="form-input">
+                        <input type="hidden" name="productid" id="productid" value="">
+                    </div>
+                    <div class="form-input">
                         <label for="productname" class="form-label">Product Name</label>
                         <input type="text" name="productname" id="productname" class="form-control"
-                            placeholder="Enter your desire user name">
+                            placeholder="Enter your product name">
                     </div>
                     <div class="form-input">
                         <label for="productcategoryid" class="form-label">Product Category</label>
@@ -102,12 +110,17 @@
                     <div class="form-input">
                         <label for="productprice" class="form-label">Product Purchace Price</label>
                         <input type="text" name="productprice" id="productprice" class="form-control"
-                            placeholder="Enter your desire user name">
+                            placeholder="Enter your product price">
                     </div>
                     <div class="form-input">
                         <label for="productsellingprice" class="form-label">Product Selling Price</label>
                         <input type="text" name="productsellingprice" id="productsellingprice" class="form-control"
-                            placeholder="Enter your desire user name">
+                            placeholder="Enter your selling price">
+                    </div>
+                    <div class="form-input">
+                        <label for="productstock" class="form-label">Product Stock</label>
+                        <input type="number" name="productstock" id="productstock" class="form-control"
+                            placeholder="Enter your product stock">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary"><svg width="32" height="32" viewBox="0 0 32 32"
@@ -135,13 +148,8 @@
                     <div class="form-input">
                         <label for="productname" class="form-label">Product Name</label>
                         <input type="text" name="productname" id="productname" class="form-control"
-                            placeholder="Enter your desire user name">
+                            placeholder="Enter your product name">
                     </div>
-                    <!-- <div class="form-input">
-                        <label for="productimage" class="form-label">Product Image</label>
-                        <input type="file" name="productimage" id="productimage" class="form-control"
-                            placeholder="Enter your desire user name">
-                    </div> -->
                     <div class="form-input">
                         <label for="productcategoryid" class="form-label">Product Category</label>
                         <select name="productcategoryid" id="productcategoryid" class="form-control">
@@ -155,12 +163,17 @@
                     <div class="form-input">
                         <label for="productprice" class="form-label">Product Purchace Price</label>
                         <input type="text" name="productprice" id="productprice" class="form-control"
-                            placeholder="Enter your desire user name">
+                            placeholder="Enter your product price">
                     </div>
                     <div class="form-input">
                         <label for="productsellingprice" class="form-label">Product Selling Price</label>
                         <input type="text" name="productsellingprice" id="productsellingprice" class="form-control"
-                            placeholder="Enter your desire user name">
+                            placeholder="Enter your product selling price">
+                    </div>
+                    <div class="form-input">
+                        <label for="productstock" class="form-label">Product Stock</label>
+                        <input type="number" name="productstock" id="productstock" class="form-control"
+                            placeholder="Enter your product stock">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary"><svg width="32" height="32" viewBox="0 0 32 32"

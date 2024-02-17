@@ -72,6 +72,7 @@
         var userStatus = $(this).data('userstatus');
         var userEmail = $(this).data('useremail');
         var userPhone = $(this).data('userphone');
+        var userPassword = $(this).data('userpassword');
         var storeID = $(this).data('storeid');
         var storeName = $(this).data('storename');
         var storeLogo = $(this).data('storelogo');
@@ -80,6 +81,7 @@
         var productName = $(this).data('productname');
         var productStock = $(this).data('productstock');
         var productPrice = $(this).data('productprice');
+        var productImage = $(this).data('productimage');
         var productSellingPrice = $(this).data('productsellingprice');
         var productCategoryID = $(this).data('productcategoryid');
         var productCategoryName = $(this).data('productcategoryname');
@@ -90,6 +92,7 @@
         $('#userstatus').val(userStatus);
         $('#useremail').val(userEmail);
         $('#userphone').val(userPhone);
+        $('#userpassword').val(userPassword);
         $('#storeid').val(storeID);
         $('#storename').val(storeName);
         $('#storelogo').val(storeLogo);
@@ -98,6 +101,7 @@
         $('#productname').val(productName);
         $('#productstock').val(productStock);
         $('#productprice').val(productPrice);
+        $('#productimage').val(productImage);
         $('#productsellingprice').val(productSellingPrice);
         $('#productcategoryid').val(productCategoryID);
         $('#productcategoryname').val(productCategoryName);

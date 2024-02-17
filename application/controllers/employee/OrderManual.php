@@ -67,11 +67,27 @@ class OrderManual extends CI_Controller
     {
         $data = array(
             'userID' => $this->input->post('userid'),
-            'productID' => $this->input->post('productid'),
             'orderStatus' => $this->input->post('orderstatus'),
             'orderMethod' => $this->input->post('ordermethod')
         );
+
         $this->db->insert('tb_order', $data);
+
+        $selected_products = $this->input->post('product');
+        $orderTotalItems = $this->input->post('orderTotalItem');
+
+        if (!empty($selected_products)) {
+            foreach ($selected_products as $index => $productID) {
+                $orderItemData = array(
+                    'orderID' => $this->db->insert_id(),
+                    'productID' => $productID,
+                    'quantity' => $orderTotalItems[$index]
+                );
+                $this->db->insert('tb_order_items', $orderItemData);
+            }
+        }
+
         redirect('admin/orderManual');
     }
+
 }

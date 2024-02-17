@@ -43,7 +43,7 @@ class ProductData extends CI_Controller
 
         $this->load->view('employee/templates/header', $data);
         $this->load->view('employee/templates/contentTop');
-        $this->load->view('admin/pages/productData', $data);
+        $this->load->view('employee/pages/productData', $data);
         $this->load->view('employee/templates/contentBottom');
         $this->load->view('admin/templates/footer');
     }
@@ -61,6 +61,24 @@ class ProductData extends CI_Controller
         redirect('employee/productData');
     }
 
+    public function update()
+    {
+        $id = $this->input->post('productid');
+        $table = 'tb_product';
+        $data = array(
+            'productName' => $this->input->post('productname'),
+            'productCategoryID' => $this->input->post('productcategoryid'),
+            'productPrice' => $this->input->post('productprice'),
+            'productSellingPrice' => $this->input->post('productsellingprice'),
+            'productStock' => $this->input->post('productstock'),
+        );
+        $this->Data->updateData($table, 'productID', $id, $data);
+        if ($this) {
+            redirect('employee/productData');
+        } else {
+            echo "Update failed.";
+        }
+    }
     public function delete()
     {
         $productid = $this->input->post('productID');

@@ -16,10 +16,10 @@
         <thead class="table-light">
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Role</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Phone</th>
+                <th scope="col">Passord</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -32,9 +32,6 @@
                             <?php echo $user['userID']; ?>
                         </th>
                         <td>
-                            <?php echo $user['userStatus']; ?>
-                        </td>
-                        <td>
                             <?php echo $user['userName']; ?>
                         </td>
                         <td>
@@ -42,6 +39,9 @@
                         </td>
                         <td>
                             <?php echo $user['userPhone']; ?>
+                        </td>
+                        <td>
+                            <?php echo $user['userPassword']; ?>
                         </td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -56,8 +56,8 @@
                                 </button>
                                 <button data-userid="<?php echo $user['userID']; ?>"
                                     data-username="<?php echo $user['userName']; ?>"
-                                    data-userstatus="<?php echo $user['userStatus']; ?>"
                                     data-useremail="<?php echo $user['userEmail']; ?>"
+                                    data-userpassword="<?php echo $user['userPassword']; ?>"
                                     data-userphone="<?php echo $user['userPhone']; ?>" class="btn btn-success edit-btn">
                                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -88,6 +88,9 @@
                     <div class="btn-close" id="close-edit-popup"></div>
                 </div>
                 <div class="form-input-group row">
+                    <div class="form-input">
+                        <input type="hidden" name="userid" id="userid" value="">
+                    </div>
                     <div class="form-input">
                         <label for="username" class="form-label">User Name</label>
                         <input type="text" name="username" id="username" class="form-control"
