@@ -1,5 +1,5 @@
 <?php
-class Profile extends CI_Controller
+class Checkout extends CI_Controller
 {
     function __construct()
     {
@@ -11,7 +11,7 @@ class Profile extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Profile';
+        $data['title'] = 'Checkout';
         $table = 'tb_store';
 
         $this->load->database();
@@ -29,7 +29,7 @@ class Profile extends CI_Controller
             redirect('login');
         } else {
             $this->load->view('user/templates/header', $data);
-            $this->load->view('other/profile/profile', $data);
+            $this->load->view('user/pages/checkout', $data);
             $this->load->view('user/templates/footer');
         }
     }

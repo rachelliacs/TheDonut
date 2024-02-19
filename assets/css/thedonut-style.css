@@ -43,6 +43,7 @@ h6 {
 }
 p {
     font-size: small;
+    margin: 0 !important;
 }
 label {
     font-size: x-small;
@@ -88,6 +89,9 @@ ul ul, ul ol, ol ol, ol ul {
 }
 ul, ol {
     list-style: none;
+}
+li {
+    margin: 0;
 }
 li::marker {
     content: "";
@@ -196,6 +200,29 @@ a.btn svg {
     cursor: pointer;
 }
 
+/* DROPDOWN */
+.dropdown-menu {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+.dropdown-toggle {
+    cursor: pointer;
+}
+.dropdown-menu.show {
+    display: block;
+    opacity: 1;
+}
+
+/* ALERT */
+.alert {
+    width: 100% !important;
+    margin: 0 !important;
+}
+.alert p:not(:last-child) {
+    margin-bottom: 16px !important;
+}
+
 /* NAVIGATION */
 .primary-nav {
     padding: 16px 0px;
@@ -226,6 +253,33 @@ a.btn svg {
     background-color: #F5EBEB80;
     color: white;
 }
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+}
+
+.profile-image {
+    width: 50px;
+    height: 50px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.btn {
+    margin-left: 10px;
+}
+
+.logout-message {
+    margin-left: 10px;
+    color: red;
+}
+
 
 /* SIDEBAR */
 .sidebar-wrapper {
@@ -288,6 +342,7 @@ form {
 .form-buttons {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 }
 .form-input-radio {
     display: flex;
@@ -325,7 +380,7 @@ form {
 }
 .form-buttons {
     display: flex;
-    gap: 32px;
+    gap: 20px;
 }
 .form.formAdd .form-content-wrap {
     align-items: flex-end;

@@ -17,10 +17,16 @@ class Auth extends CI_Model
         $this->db->insert('tb_user', $data_user);
     }
 
-    function check_login()
+    public function check_login($username, $userpassword)
     {
-        if (empty($this->session->userdata('is_login'))) {
-            redirect('login');
+        // Query to check if username and password exist in database
+        $query = $this->db->get_where('tb_user', array('username' => $username, 'userpassword' => $userpassword));
+
+        // Check if there is a matching user
+        if ($query->num_rows() == 1) {
+            return true;
+        } else {
+            return false;
         }
     }
 

@@ -31,6 +31,36 @@
         </div>
     </div>
 </footer>
+<script>
+    document.querySelector('.dropdown-toggle').addEventListener('click', function () {
+        document.querySelector('.dropdown-menu').classList.toggle('show');
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        // Product link click event handler
+        $(".product-link").click(function (e) {
+            e.preventDefault(); // Prevent default link behavior
+
+            // Retrieve Product ID from data attribute
+            var productID = $(this).data("product-id");
+
+            // AJAX request to fetch product details
+            $.ajax({
+                url: "fetch_product_details.php", // Replace with your server endpoint
+                method: "POST",
+                data: { productID: productID },
+                success: function (response) {
+                    // Update product details container with fetched details
+                    $("#product-details-container").html(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error fetching product details:", error);
+                }
+            });
+        });
+    });
+</script>
 <!-- Local JS -->
 <script src="<?= base_url(); ?>application/assets/js/script.js"></script>
 <script src="<?= base_url(); ?>templates/Ultras/js/jquery-1.11.0.min.js"></script>
