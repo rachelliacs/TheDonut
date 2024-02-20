@@ -67,19 +67,23 @@
     // Event listener for edit button click
     $('.edit-btn').click(function () {
         // Get data from the clicked edit button
+        var productImage = $(this).data('productimage');
+        $('#productimage').attr('src', productImage); // Set image source
+
         var userID = $(this).data('userid');
         var userName = $(this).data('username');
         var userStatus = $(this).data('userstatus');
         var userEmail = $(this).data('useremail');
         var userPhone = $(this).data('userphone');
+        var userPassword = $(this).data('userpassword');
         var storeID = $(this).data('storeid');
         var storeName = $(this).data('storename');
         var storeLogo = $(this).data('storelogo');
         var storeDesc = $(this).data('storedesc');
         var productID = $(this).data('productid');
         var productName = $(this).data('productname');
+        var productDesc = $(this).data('productdesc');
         var productStock = $(this).data('productstock');
-        var productCategoryName = $(this).data('productcategoryname');
         var productPrice = $(this).data('productprice');
         var productSellingPrice = $(this).data('productsellingprice');
         var productCategoryID = $(this).data('productcategoryid');
@@ -91,14 +95,15 @@
         $('#userstatus').val(userStatus);
         $('#useremail').val(userEmail);
         $('#userphone').val(userPhone);
+        $('#userpassword').val(userPassword);
         $('#storeid').val(storeID);
         $('#storename').val(storeName);
         $('#storelogo').val(storeLogo);
         $('#storedesc').val(storeDesc);
         $('#productid').val(productID);
         $('#productname').val(productName);
+        $('#productdesc').val(productDesc);
         $('#productstock').val(productStock);
-        $('#productcategoryname').val(productCategoryName);
         $('#productprice').val(productPrice);
         $('#productsellingprice').val(productSellingPrice);
         $('#productcategoryid').val(productCategoryID);

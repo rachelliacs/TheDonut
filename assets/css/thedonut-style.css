@@ -344,6 +344,13 @@ td {
     border-radius: 8px;
     margin: 0px;
 }
+.form-group {
+    display: flex;
+    gap: 16px;
+}
+.form-input {
+    width: 100%;
+}
 .form-input-group,
 .form-buttons {
     align-self: stretch;

@@ -18,7 +18,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Category</th>
-                <!-- <th scope="col">Description</th> -->
+                <th scope="col">Img</th>
                 <th scope="col">Price</th>
                 <th scope="col">Selling</th>
                 <th scope="col">Stock</th>
@@ -40,6 +40,10 @@
                     <!-- <td>
                         <?php echo substr($product['productDesc'], 0, 12); ?>...
                     </td> -->
+                    <td>
+                        <img src="<?= base_url(); ?>assets/img/<?= $product['productImage']; ?>"
+                            alt="<?php echo $product['productImage']; ?>">
+                    </td>
                     <td>
                         <?php echo $product['productPrice']; ?>0 IDR
                     </td>
@@ -63,6 +67,7 @@
                             <button data-productid="<?php echo $product['productID']; ?>"
                                 data-productname="<?php echo $product['productName']; ?>"
                                 data-productcategoryid="<?php echo $product['productCategoryID']; ?>"
+                                data-productimage="<?php echo $product['productImage']; ?>"
                                 data-productdesc="<?php echo $product['productDesc']; ?>"
                                 data-productprice="<?php echo $product['productPrice']; ?>"
                                 data-productsellingprice="<?php echo $product['productSellingPrice']; ?>"
@@ -97,39 +102,49 @@
                     <div class="form-input">
                         <input type="hidden" name="productid" id="productid" value="">
                     </div>
-                    <div class="form-input">
-                        <label for="productname" class="form-label">Product Name</label>
-                        <input type="text" name="productname" id="productname" class="form-control"
-                            placeholder="Enter your product name">
-                    </div>
-                    <div class="form-input">
-                        <label for="productcategoryid" class="form-label">Product Category</label>
-                        <select name="productcategoryid" id="productcategoryid" class="form-control">
-                            <?php foreach ($productcategories as $productcategory): ?>
-                                <option value="<?php echo $productcategory['productCategoryID']; ?>">
-                                    <?php echo $productcategory['productCategoryName']; ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
+                    <div class="form-group">
+                        <div class="form-input">
+                            <label for="productname" class="form-label">Product Name</label>
+                            <input type="text" name="productname" id="productname" class="form-control"
+                                placeholder="Enter your product name">
+                        </div>
+                        <div class="form-input">
+                            <label for="productcategoryid" class="form-label">Product Category</label>
+                            <select name="productcategoryid" id="productcategoryid" class="form-control">
+                                <?php foreach ($productcategories as $productcategory): ?>
+                                    <option value="<?php echo $productcategory['productCategoryID']; ?>">
+                                        <?php echo $productcategory['productCategoryName']; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-input">
                         <label for="productdesc" class="form-label">Product Description</label>
                         <textarea name="productdesc" id="productdesc" placeholder=" Enter your product desc"></textarea>
                     </div>
-                    <div class="form-input">
-                        <label for="productprice" class="form-label">Product Purchace Price</label>
-                        <input type="text" name="productprice" id="productprice" class="form-control"
-                            placeholder="Enter your product price">
+                    <div class="form-group">
+                        <div class="form-input">
+                            <label for="productprice" class="form-label">Product Purchace Price</label>
+                            <input type="text" name="productprice" id="productprice" class="form-control"
+                                placeholder="Enter your product price">
+                        </div>
+                        <div class="form-input">
+                            <label for="productsellingprice" class="form-label">Product Selling Price</label>
+                            <input type="text" name="productsellingprice" id="productsellingprice" class="form-control"
+                                placeholder="Enter your selling price">
+                        </div>
                     </div>
-                    <div class="form-input">
-                        <label for="productsellingprice" class="form-label">Product Selling Price</label>
-                        <input type="text" name="productsellingprice" id="productsellingprice" class="form-control"
-                            placeholder="Enter your selling price">
-                    </div>
-                    <div class="form-input">
-                        <label for="productstock" class="form-label">Product Stock</label>
-                        <input type="number" name="productstock" id="productstock" class="form-control"
-                            placeholder="Enter your product stock">
+                    <div class="form-group">
+                        <div class="form-input">
+                            <label for="productimage" class="form-label">Product Image</label>
+                            <input type="file" name="productimage" id="productimage" class="form-control">
+                        </div>
+                        <div class="form-input">
+                            <label for="productstock" class="form-label">Product Stock</label>
+                            <input type="number" name="productstock" id="productstock" class="form-control"
+                                placeholder="Enter your product stock">
+                        </div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary"><svg width="32" height="32" viewBox="0 0 32 32"
@@ -155,39 +170,51 @@
                 </h6>
                 <div class="form-input-group">
                     <div class="form-input">
-                        <label for="productname" class="form-label">Product Name</label>
-                        <input type="text" name="productname" id="productname" class="form-control"
-                            placeholder="Enter your product name">
+                        <input type="hidden" name="productid" id="productid" value="">
                     </div>
-                    <div class="form-input">
-                        <label for="productcategoryid" class="form-label">Product Category</label>
-                        <select name="productcategoryid" id="productcategoryid" class="form-control">
-                            <?php foreach ($productcategories as $productcategory): ?>
-                                <option value="<?php echo $productcategory['productCategoryID']; ?>">
-                                    <?php echo $productcategory['productCategoryName']; ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
+                    <div class="form-group">
+                        <div class="form-input">
+                            <label for="productname" class="form-label">Product Name</label>
+                            <input type="text" name="productname" id="productname" class="form-control"
+                                placeholder="Enter your product name">
+                        </div>
+                        <div class="form-input">
+                            <label for="productcategoryid" class="form-label">Product Category</label>
+                            <select name="productcategoryid" id="productcategoryid" class="form-control">
+                                <?php foreach ($productcategories as $productcategory): ?>
+                                    <option value="<?php echo $productcategory['productCategoryID']; ?>">
+                                        <?php echo $productcategory['productCategoryName']; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-input">
                         <label for="productdesc" class="form-label">Product Name</label>
-                        <textarea name="productdesc" id="productdesc" class="form-control"
-                            placeholder="Enter your product desc"></textarea>
+                        <textarea name="productdesc" id="productdesc" placeholder="Enter your product desc"></textarea>
                     </div>
-                    <div class="form-input">
-                        <label for="productprice" class="form-label">Product Purchace Price</label>
-                        <input type="text" name="productprice" id="productprice" class="form-control"
-                            placeholder="Enter your product price">
+                    <div class="form-group">
+                        <div class="form-input">
+                            <label for="productprice" class="form-label">Product Purchace Price</label>
+                            <input type="text" name="productprice" id="productprice" class="form-control"
+                                placeholder="Enter your product price">
+                        </div>
+                        <div class="form-input">
+                            <label for="productsellingprice" class="form-label">Product Selling Price</label>
+                            <input type="text" name="productsellingprice" id="productsellingprice" class="form-control"
+                                placeholder="Enter your product selling price">
+                        </div>
                     </div>
-                    <div class="form-input">
-                        <label for="productsellingprice" class="form-label">Product Selling Price</label>
-                        <input type="text" name="productsellingprice" id="productsellingprice" class="form-control"
-                            placeholder="Enter your product selling price">
-                    </div>
-                    <div class="form-input">
-                        <label for="productstock" class="form-label">Product Stock</label>
-                        <input type="number" name="productstock" id="productstock" class="form-control"
-                            placeholder="Enter your product stock">
+                    <div class="form-group">
+                        <div class="form-input">
+                            <label for="productimage" class="form-label">Product Image</label>
+                            <input type="file" name="productimage" id="productimage" class="form-control">
+                        </div>
+                        <div class="form-input">
+                            <label for="productstock" class="form-label">Product Stock</label>
+                            <input type="number" name="productstock" id="productstock" class="form-control"
+                                placeholder="Enter your product stock">
+                        </div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary"><svg width="32" height="32" viewBox="0 0 32 32"

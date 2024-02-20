@@ -40,8 +40,8 @@
 						<a href="<?php echo base_url('product/view/' . $product['productID']); ?>">
 							<div class="product-item">
 								<div class="image-holder">
-									<img src="<?= base_url(); ?>assets/img/<?= $product['productImage'] ?>" alt="product"
-										class="product-image" />
+									<img src="<?= base_url(); ?>assets/img/<?= $product['productImage'] ?>"
+										alt="<?= $product['productImage'] ?>" class="product-image" />
 								</div>
 								<div class="product-detail">
 									<h3 class="product-title">
@@ -68,8 +68,8 @@
 								<a href="<?php echo base_url('product/view/' . $product['productID']); ?>">
 									<div class="product-item">
 										<div class="image-holder">
-											<img src="<?= base_url(); ?>assets/img/<?= $product['productImage'] ?>" alt="product"
-												class="product-image" />
+											<img src="<?= base_url(); ?>assets/img/<?= $product['productImage'] ?>"
+												alt="<?= $product['productImage'] ?>" class="product-image" />
 										</div>
 										<div class="product-detail">
 											<h3 class="product-title">

@@ -6,9 +6,9 @@ class Data extends CI_Model
         parent::__construct();
     }
 
-    public function getAllData($table)
+    public function getAllData($table, $condition)
     {
-        return $this->db->get($table)->result();
+        return $this->db->get_where($table, $condition)->row_array();
     }
 
     public function getDataById($table, $idField, $idValue)
