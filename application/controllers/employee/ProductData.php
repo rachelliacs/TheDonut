@@ -53,7 +53,7 @@ class ProductData extends CI_Controller
         $data = array(
             'productName' => $this->input->post('productname'),
             'productCategoryID' => $this->input->post('productcategoryid'),
-            'productImage' => 'thedonut-product(1).png',
+            'productImage' => '-product(1).png',
             'productPrice' => $this->input->post('productprice'),
             'productSellingPrice' => $this->input->post('productsellingprice')
         );
