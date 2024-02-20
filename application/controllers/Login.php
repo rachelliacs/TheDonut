@@ -35,8 +35,8 @@ class Login extends CI_Controller
         // Check if the form is submitted
         if ($this->input->post()) {
             // Form validation rules
-            $this->form_validation->set_rules('username', 'Username', 'trim|required');
-            $this->form_validation->set_rules('userpassword', 'Password', 'trim|required');
+            $this->form_validation->set_rules('username', 'username', 'trim|required');
+            $this->form_validation->set_rules('userpassword', 'userpassword', 'trim|required');
 
             // Run form validation
             if ($this->form_validation->run() == TRUE) {
@@ -54,7 +54,18 @@ class Login extends CI_Controller
                     // Jika proses verifikasi username dan password berhasil
                     $username = $this->input->post('username'); // Misalnya, Anda mengambil username dari formulir
                     // Contoh: setelah verifikasi username dan password berhasil
+
+                    $query = $this->db->get('tb_user');
+                    if ($query) {
+                        $data['users'] = $query->result_array();
+                    } else {
+                        echo "Error retrieving data from the database.";
+                    }
+
                     $this->session->set_userdata('username', $username); // Simpan nama pengguna dalam sesi
+                    $this->session->set_userdata('useremail', $users['userEmail']);
+                    $this->session->set_userdata('userphone', $users['userPhone']);
+                    $this->session->set_userdata('userpassword', $userpassword);
                     // Redirect to dashboard or desired page
                     redirect('');
                 } else {

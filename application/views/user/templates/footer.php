@@ -32,6 +32,32 @@
     </div>
 </footer>
 <script>
+    $(document).ready(function () {
+        // Handle small image click
+        $('.small-image').click(function () {
+            var mainImage = $('#mainImage');
+            var smallImageIndex = $(this).data('small-image-index');
+            var smallImagePath = $(this).attr('src');
+            var mainImagePath = $(this).data('main-image');
+
+            // Update the main image source
+            mainImage.attr('src', smallImagePath);
+
+            // Optionally, you can also update the alt attribute or perform other actions
+            // mainImage.attr('alt', 'New Alt Text');
+
+            // Reset the previous clicked small image to its original state
+            $('.small-image').removeClass('active');
+            // Add a class to the clicked small image to highlight it
+            $(this).addClass('active');
+        });
+    });
+</script>
+
+<script>
+    AOS.init();
+</script>
+<script>
     document.querySelector('.dropdown-toggle').addEventListener('click', function () {
         document.querySelector('.dropdown-menu').classList.toggle('show');
     });
@@ -68,9 +94,10 @@
 <script src="<?= base_url(); ?>templates/Ultras/js/script.js"></script>
 <!--  -->
 <!-- Online JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
 <!--  -->
 </body>
 

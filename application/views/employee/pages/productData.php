@@ -18,8 +18,9 @@
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Category</th>
-                <th scope="col">Purchase Price</th>
-                <th scope="col">Selling Price</th>
+                <!-- <th scope="col">Description</th> -->
+                <th scope="col">Price</th>
+                <th scope="col">Selling</th>
                 <th scope="col">Stock</th>
                 <th scope="col">Action</th>
             </tr>
@@ -36,6 +37,9 @@
                     <td>
                         <?php echo $product['productCategoryName']; ?>
                     </td>
+                    <!-- <td>
+                        <?php echo substr($product['productDesc'], 0, 12); ?>...
+                    </td> -->
                     <td>
                         <?php echo $product['productPrice']; ?>0 IDR
                     </td>
@@ -59,6 +63,7 @@
                             <button data-productid="<?php echo $product['productID']; ?>"
                                 data-productname="<?php echo $product['productName']; ?>"
                                 data-productcategoryid="<?php echo $product['productCategoryID']; ?>"
+                                data-productdesc="<?php echo $product['productDesc']; ?>"
                                 data-productprice="<?php echo $product['productPrice']; ?>"
                                 data-productsellingprice="<?php echo $product['productSellingPrice']; ?>"
                                 data-productstock="<?php echo $product['productStock']; ?>"
@@ -106,6 +111,10 @@
                                 </option>
                             <?php endforeach; ?>
                         </select>
+                    </div>
+                    <div class="form-input">
+                        <label for="productdesc" class="form-label">Product Description</label>
+                        <textarea name="productdesc" id="productdesc" placeholder=" Enter your product desc"></textarea>
                     </div>
                     <div class="form-input">
                         <label for="productprice" class="form-label">Product Purchace Price</label>
@@ -159,6 +168,11 @@
                                 </option>
                             <?php endforeach; ?>
                         </select>
+                    </div>
+                    <div class="form-input">
+                        <label for="productdesc" class="form-label">Product Name</label>
+                        <textarea name="productdesc" id="productdesc" class="form-control"
+                            placeholder="Enter your product desc"></textarea>
                     </div>
                     <div class="form-input">
                         <label for="productprice" class="form-label">Product Purchace Price</label>

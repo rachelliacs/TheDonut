@@ -53,7 +53,8 @@ label {
     text-transform: uppercase;
 }
 input,
-select {
+select,
+textarea {
     width: 100%;
     height: auto !important;
     margin: 0px;
@@ -257,12 +258,10 @@ a.btn svg {
     display: flex;
     align-items: center;
 }
-
 .profile-info {
     display: flex;
     align-items: center;
 }
-
 .profile-image {
     width: 50px;
     height: 50px;
@@ -270,11 +269,18 @@ a.btn svg {
     border-radius: 50%;
     margin-right: 10px;
 }
-
+.profile-info {
+    margin-bottom: 20px;
+}
+.profile-info label {
+    font-weight: bold;
+}
+.profile-info p {
+    margin-top: 5px;
+}
 .btn {
     margin-left: 10px;
 }
-
 .logout-message {
     margin-left: 10px;
     color: red;
@@ -329,6 +335,9 @@ a.btn svg {
 }
 form {
     margin: 0;
+}
+td {
+    max-width: 58px;
 }
 .form {
     display: flex;
@@ -398,8 +407,42 @@ form {
     font-size: 24px !important;
 }
 .form.formAdd input,
-.form.formAdd select {
+.form.formAdd select,
+.form.formAdd textarea {
     border: 1px solid var(--accent-color) !important;
+}
+input[type="number"] {
+    border: none !important;
+}
+.sticky-cart {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 96px; /* Adjust as needed */
+}
+.sticky-cart form {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: baseline;
+}
+.sticky-cart input[type="number"],
+.sticky-cart button {
+    margin-left: 10px; /* Adjust as needed */
+}
+.product-image {
+    max-width: 380px;
+    max-height: 380px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+}
+.product-small-image {
+    max-width: 100px;
+    max-height: 100px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
 }
 .popup-form {
     display: none;

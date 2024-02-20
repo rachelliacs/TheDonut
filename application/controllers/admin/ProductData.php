@@ -55,6 +55,7 @@ class ProductData extends CI_Controller
             'productCategoryID' => $this->input->post('productcategoryid'),
             'productImage' => 'thedonut-product(1).png',
             'productPrice' => $this->input->post('productprice'),
+            'productDesc' => $this->input->post('productdesc'),
             'productSellingPrice' => $this->input->post('productsellingprice'),
             'productStock' => $this->input->post('productstock'),
         );
@@ -70,6 +71,7 @@ class ProductData extends CI_Controller
             'productName' => $this->input->post('productname'),
             'productCategoryID' => $this->input->post('productcategoryid'),
             'productPrice' => $this->input->post('productprice'),
+            'productDesc' => $this->input->post('productdesc'),
             'productSellingPrice' => $this->input->post('productsellingprice'),
             'productStock' => $this->input->post('productstock'),
         );

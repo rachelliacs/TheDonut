@@ -79,6 +79,7 @@
         var storeDesc = $(this).data('storedesc');
         var productID = $(this).data('productid');
         var productName = $(this).data('productname');
+        var productDesc = $(this).data('productdesc');
         var productStock = $(this).data('productstock');
         var productPrice = $(this).data('productprice');
         var productImage = $(this).data('productimage');
@@ -99,6 +100,7 @@
         $('#storedesc').val(storeDesc);
         $('#productid').val(productID);
         $('#productname').val(productName);
+        $('#productdesc').val(productDesc);
         $('#productstock').val(productStock);
         $('#productprice').val(productPrice);
         $('#productimage').val(productImage);
