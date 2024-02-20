@@ -24,6 +24,13 @@ class Home extends CI_Controller
                 }
                 $data['StoreName'] = $StoreName;
 
+                $query = $this->db->get('tb_user');
+                if ($query) {
+                        $data['users'] = $query->result_array();
+                } else {
+                        echo "Error retrieving data from the database.";
+                }
+
                 $query = $this->db->get('tb_product');
                 if ($query) {
                         $data['products'] = $query->result_array();
@@ -34,13 +41,6 @@ class Home extends CI_Controller
                 $query = $this->db->get('tb_productCategory');
                 if ($query) {
                         $data['productcategories'] = $query->result_array();
-                } else {
-                        echo "Error retrieving data from the database.";
-                }
-
-                $query = $this->db->get('tb_product');
-                if ($query) {
-                        $data['products'] = $query->result_array();
                 } else {
                         echo "Error retrieving data from the database.";
                 }

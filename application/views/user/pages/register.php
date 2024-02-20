@@ -1,4 +1,4 @@
-<div class="section padding-small">
+<div class="section section-auth padding-small">
     <div class="container">
         <?php
         if ($this->session->flashdata('error') != '') {
@@ -30,7 +30,6 @@
                         <label for="userpassword" class="form-label">Password</label>
                         <input type="password" class="form-control" name="userpassword" id="userpassword"
                             placeholder="Enter your password" aria-describedby="userpasswordHelp">
-                        <div id="userpasswordHelp" class="form-text">Create 8 character long password.</div>
                     </div>
                 </div>
                 <div class="form-buttons">

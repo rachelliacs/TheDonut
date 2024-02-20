@@ -1,20 +1,6 @@
 <div class="section section-auth padding-small">
     <div class="container">
-        <?php
-        if ($this->session->flashdata('error') != '') {
-            echo '<div class="alert alert-danger" role="alert">';
-            echo $this->session->flashdata('error');
-            echo '</div>';
-        }
-        ?>
-        <?php
-        if ($this->session->flashdata('success_register') != '') {
-            echo '<div class="alert alert-info" role="alert">';
-            echo $this->session->flashdata('success_register');
-            echo '</div>';
-        }
-        ?>
-        <form method="post" action="<?= base_url(); ?>user/login/process" class="form">
+        <form method="post" action="<?= base_url(); ?>login/process" class="form">
             <div class="form-content-wrap">
                 <h1>Login</h1>
                 <div class="form-input-group">
@@ -29,6 +15,13 @@
                             placeholder="Enter your password">
                     </div>
                 </div>
+                <?php
+                if (validation_errors()) {
+                    echo '<div class="alert alert-danger" role="alert">';
+                    echo validation_errors();
+                    echo '</div>';
+                }
+                ?>
                 <div class="form-buttons">
                     <button type="submit" class="btn btn-primary">Login</button>
                     <a href="<?= base_url(); ?>register" class="btn btn-primary">Register</a>
@@ -37,3 +30,10 @@
         </form>
     </div>
 </div>
+<?php
+if ($this->session->flashdata('error') != '') {
+    echo '<script type="text/javascript">';
+    echo 'alert("Login gagal! Silakan cek kembali username dan password Anda.");';
+    echo '</script>';
+}
+?>
