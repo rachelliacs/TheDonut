@@ -1,12 +1,3 @@
-<div class="section padding-small">
-    <div class="container">
-        <h1>
-            <?php foreach ($products as $product): ?>
-            <?php echo $product['productName']; ?>
-            <?php endforeach; ?>        
-        </h1>
-    </div>
-</div>
 <div class="wp-block-group single-product-page is-layout-flow wp-container-core-group-layout-36 wp-block-group-is-layout-flow" style="margin-top:30px;padding-right:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
 <div class="wp-block-group alignfull has-gray-200-background-color has-background has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="border-radius:32px;padding-top:0px;padding-right:var(--wp--preset--spacing--30);padding-bottom:0px;padding-left:var(--wp--preset--spacing--30)">
 <div class="wp-block-group alignwide p-2 has-gray-200-background-color has-background has-global-padding is-layout-constrained wp-container-core-group-layout-31 wp-block-group-is-layout-constrained" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50)"><div data-block-name="woocommerce/store-notices" class="woocommerce wc-block-store-notices alignwide  alignwide"><div class="woocommerce-notices-wrapper"></div></div>
