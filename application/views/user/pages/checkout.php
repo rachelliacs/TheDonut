@@ -32,7 +32,8 @@
                                     required></textarea>
                             </div>
                             <div class="form-buttons">
-                                <button class="btn btn-primary">Checkout</button>
+                                <button class="btn btn-primary">QRIS</button>
+                                <button class="btn btn-primary">Cash</button>
                             </div>
                         </div>
                     </div>
