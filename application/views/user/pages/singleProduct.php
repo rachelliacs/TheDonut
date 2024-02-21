@@ -47,7 +47,7 @@
                         <div class="form-content-wrap">
                             <p>Amount Order</p>
                             <input type="hidden" name="productid" value="<?php echo $product['productID']; ?>">
-                            <input type="number" name="quantity" value="1" min="1">
+                            <input type="number" name="cartquantity" value="1" min="1">
                             <button type="submit" class="btn btn-primary">Add to Cart</button>
                         </div>
                     </form>

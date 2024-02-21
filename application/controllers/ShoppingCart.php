@@ -51,7 +51,7 @@ class ShoppingCart extends CI_Controller
             redirect('login');
         } else {
             $this->load->view('user/templates/header', $data);
-            $this->load->view('user/pages/cart', $data);
+            $this->load->view('user/pages/shoppingcart', $data);
             $this->load->view('user/templates/footer');
         }
     }
@@ -61,7 +61,7 @@ class ShoppingCart extends CI_Controller
         // Add product to cart
         $this->Cart->add_to_cart($productid);
         // Redirect to cart page
-        redirect('cart');
+        redirect('shoppingcart');
     }
 
 }
