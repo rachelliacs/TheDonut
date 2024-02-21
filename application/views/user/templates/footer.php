@@ -33,8 +33,20 @@
 </footer>
 <script>
     $(document).ready(function () {
-        // Handle small image click
+        // Click event handler for small images
         $('.small-image').click(function () {
+            // Get the URL of the clicked small image
+            var smallImageUrl = $(this).data('small-image');
+
+            // Update the main image src attribute
+            $('#mainImage').attr('src', smallImageUrl);
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        // Handle small image click
+        $('.product-small-image').click(function () {
             var mainImage = $('#mainImage');
             var smallImageIndex = $(this).data('small-image-index');
             var smallImagePath = $(this).attr('src');
@@ -53,7 +65,6 @@
         });
     });
 </script>
-
 <script>
     AOS.init();
 </script>

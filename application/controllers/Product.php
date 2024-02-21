@@ -46,6 +46,13 @@ class Product extends CI_Controller
             echo "Error retrieving data from the database.";
         }
 
+        $query = $this->db->get('tb_productImages');
+        if ($query) {
+            $data['smallImages'] = $query->result_array();
+        } else {
+            echo "Error retrieving data from the database.";
+        }
+
         // Check if user is logged in
         if (!$this->session->userdata('logged_in')) {
             // User is not logged in, redirect to login page
