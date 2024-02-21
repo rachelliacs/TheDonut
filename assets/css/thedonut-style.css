@@ -353,6 +353,7 @@ td {
 }
 .form-input-group,
 .form-buttons {
+    width: 100%;
     align-self: stretch;
 }
 .form-buttons {
@@ -488,11 +489,11 @@ input[type="number"] {
     width: 100%;
     background-color: white;
     padding: 32px;
-    border-radius: 14px;
+    border-radius: 16px;
+    overflow: hidden;
     margin: 0;
 }
 .table-transparent {
-    border-radius: 0px;
     background-color: transparent;
 }
 .table>:not(caption)>*>* {
