@@ -37,22 +37,22 @@
 			<div id="all" data-tab-content="" class="active">
 				<div class="product-item-wrap">
 					<?php foreach ($products as $product): ?>
-						<div class="product-item">
-							<div class="image-holder">
-								<img src="<?= base_url(); ?>assets/img/<?= $product['productImage'] ?>" alt="product"
-									class="product-image" />
-							</div>
-							<div class="product-detail">
-								<h3 class="product-title">
-									<a href="<?= base_url(); ?>singleProduct">
+						<a href="<?php echo base_url('product/view/' . $product['productID']); ?>">
+							<div class="product-item">
+								<div class="image-holder">
+									<img src="<?= base_url(); ?>assets/img/<?= $product['productImage'] ?>"
+										alt="<?= $product['productImage'] ?>" class="product-image" />
+								</div>
+								<div class="product-detail">
+									<h3 class="product-title">
 										<?php echo $product['productName']; ?>
-									</a>
-								</h3>
-								<div class="item-price text-primary">
-									<?php echo $product['productPrice']; ?>0 IDR
+									</h3>
+									<div class="item-price text-primary">
+										<?php echo $product['productPrice']; ?>0 IDR
+									</div>
 								</div>
 							</div>
-						</div>
+						</a>
 					<?php endforeach; ?>
 				</div>
 			</div>
@@ -65,22 +65,22 @@
 					<div class="product-item-wrap">
 						<?php foreach ($products as $product): ?>
 							<?php if ($product['productCategoryID'] == $productcategory['productCategoryID']): ?>
-								<div class="product-item">
-									<div class="image-holder">
-										<img src="<?= base_url(); ?>assets/img/<?= $product['productImage'] ?>" alt="product"
-											class="product-image" />
-									</div>
-									<div class="product-detail">
-										<h3 class="product-title">
-											<a href="<?= base_url(); ?>singleProduct">
+								<a href="<?php echo base_url('product/view/' . $product['productID']); ?>">
+									<div class="product-item">
+										<div class="image-holder">
+											<img src="<?= base_url(); ?>assets/img/<?= $product['productImage'] ?>"
+												alt="<?= $product['productImage'] ?>" class="product-image" />
+										</div>
+										<div class="product-detail">
+											<h3 class="product-title">
 												<?php echo $product['productName']; ?>
-											</a>
-										</h3>
-										<div class="item-price text-primary">
-											<?php echo $product['productPrice']; ?>0 IDR
+											</h3>
+											<div class="item-price text-primary">
+												<?php echo $product['productPrice']; ?>0 IDR
+											</div>
 										</div>
 									</div>
-								</div>
+								</a>
 							<?php endif; ?>
 						<?php endforeach; ?>
 					</div>

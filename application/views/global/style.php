@@ -7,6 +7,7 @@
     rel="stylesheet">
 <link rel="stylesheet" type="text/css" media="all"
     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
 <!-- Vendor CSS Files -->
 <link href="<?= base_url(); ?>assets/vendor/animate.css/animate.min.css" rel="stylesheet">

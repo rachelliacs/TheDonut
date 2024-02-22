@@ -46,18 +46,13 @@ class ShoppingCart extends CI_Controller
             echo "Error retrieving data from the database.";
         }
 
-        // Fetch cart items from the database
-        // $data['cart_items'] = $this->Cart->get_cart_items();
-        // // Calculate total price
-        // $data['total_price'] = $this->Cart->calculate_total_price();
-
         // Check if user is logged in
         if (!$this->session->userdata('logged_in')) {
             // User is not logged in, redirect to login page
             redirect('login');
         } else {
             $this->load->view('user/templates/header', $data);
-            $this->load->view('user/pages/cart', $data);
+            $this->load->view('user/pages/shoppingcart', $data);
             $this->load->view('user/templates/footer');
         }
     }
@@ -67,7 +62,7 @@ class ShoppingCart extends CI_Controller
         // Add product to cart
         $this->Cart->add_to_cart($productid);
         // Redirect to cart page
-        redirect('cart');
+        redirect('shoppingcart');
     }
 
 }

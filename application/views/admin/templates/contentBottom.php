@@ -67,6 +67,9 @@
     // Event listener for edit button click
     $('.edit-btn').click(function () {
         // Get data from the clicked edit button
+        var productImage = $(this).data('productimage');
+        $('#productimage').attr('src', productImage); // Set image source
+
         var userID = $(this).data('userid');
         var userName = $(this).data('username');
         var userStatus = $(this).data('userstatus');
@@ -79,9 +82,9 @@
         var storeDesc = $(this).data('storedesc');
         var productID = $(this).data('productid');
         var productName = $(this).data('productname');
+        var productDesc = $(this).data('productdesc');
         var productStock = $(this).data('productstock');
         var productPrice = $(this).data('productprice');
-        var productImage = $(this).data('productimage');
         var productSellingPrice = $(this).data('productsellingprice');
         var productCategoryID = $(this).data('productcategoryid');
         var productCategoryName = $(this).data('productcategoryname');
@@ -99,9 +102,9 @@
         $('#storedesc').val(storeDesc);
         $('#productid').val(productID);
         $('#productname').val(productName);
+        $('#productdesc').val(productDesc);
         $('#productstock').val(productStock);
         $('#productprice').val(productPrice);
-        $('#productimage').val(productImage);
         $('#productsellingprice').val(productSellingPrice);
         $('#productcategoryid').val(productCategoryID);
         $('#productcategoryname').val(productCategoryName);

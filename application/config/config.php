@@ -23,7 +23,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://thedonut.test/';
+$config['base_url'] = 'https://jyfur65.localto.net/thedonut/';
 
 /*
 |--------------------------------------------------------------------------
@@ -536,8 +536,7 @@ $config['proxy_ips'] = '';
 | Upload Image Through Form
 |--------------------------------------------------------------------------
 */
-// $config['upload_path'] = './assets/img/'; // Path to your upload folder
-// $config['allowed_types'] = 'svg|jpg|png'; // Allowed file types
-// $config['max_size'] = 1024 * 2; // Maximum file size in kilobytes
-// $config['encrypt_name'] = TRUE; // Encrypt file name for added security
-// $this->load->library('upload', $config);
+$config['upload_path'] = './assets/img/'; // Path to your upload folder
+$config['allowed_types'] = 'svg|jpg|png'; // Allowed file types
+$config['max_size'] = 1024 * 2; // Maximum file size in kilobytes
+$config['encrypt_name'] = TRUE; // Encrypt file name for added security
