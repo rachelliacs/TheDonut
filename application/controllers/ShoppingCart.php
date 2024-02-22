@@ -12,6 +12,7 @@ class ShoppingCart extends CI_Controller
 
     public function index()
     {
+
         $data['title'] = 'Cart';
         $table = 'tb_store';
 

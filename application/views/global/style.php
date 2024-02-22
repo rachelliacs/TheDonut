@@ -26,8 +26,9 @@
 
 <!-- Local JS -->
 <script src="<?= base_url(); ?>assets/js/modernizr.js"></script>
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
+<script type="text/javascript"
+      src="https://app.sandbox.midtrans.com/snap/snap.js"
+      data-client-key="SB-Mid-client-eaP5uTo2Ar44qT5R">
+</script>
 <!--  -->
