@@ -85,7 +85,8 @@
 								</div>
 							</div>
 							<a href="<?= base_url('checkout'); ?>"
-								class="btn btn-black btn-lg py-3 btn-block">Checkout</a>
+								class="btn btn-black btn-lg py-3 btn-block" id="pay-button">Checkout</a>
+								<pre><div id="result-json">JSON result will appear here after payment:<br></div></pre> 
 						</div>
 					</div>
 				</div>

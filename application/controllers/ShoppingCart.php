@@ -8,6 +8,8 @@ class ShoppingCart extends CI_Controller
         $this->load->model('Data');
         $this->load->model('Cart');
         $this->load->library('session');
+        $this->load->config('midtrans');
+        require_once(APPPATH . 'libraries/Midtrans.php');
     }
 
     public function index()
