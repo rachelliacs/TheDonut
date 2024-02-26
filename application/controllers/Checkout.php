@@ -8,7 +8,13 @@ class Checkout extends CI_Controller
         $this->load->model('Data');
         $this->load->library('session');
         $this->load->config('midtrans');
+        $this->load->helper('url');
         require_once(APPPATH . 'libraries/Midtrans.php');
+        require_once './Midtrans/Midtrans/Config.php';
+        require_once './Midtrans/Midtrans/Snap.php';
+        require_once './Midtrans/Midtrans/Sanitizer.php';
+        require_once './Midtrans/Midtrans/ApiRequestor.php';
+
     }
 
     public function index()
@@ -28,7 +34,9 @@ class Checkout extends CI_Controller
             )
         );
         
-        $snapToken = \Midtrans\Snap::getSnapToken($params);
+        $data = [
+            'snapToken' =>\Midtrans\Snap::getSnapToken($params)
+        ];
         $data['title'] = 'Checkout';
         $table = 'tb_store';
 

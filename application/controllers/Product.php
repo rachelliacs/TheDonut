@@ -46,7 +46,7 @@ class Product extends CI_Controller
             echo "Error retrieving data from the database.";
         }
 
-        $query = $this->db->get('tb_productImages');
+        $query = $this->db->get('tb_product');
         if ($query) {
             $data['smallImages'] = $query->result_array();
         } else {

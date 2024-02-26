@@ -12,7 +12,7 @@
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-5">
-                <form action="<?php echo base_url('checkout/process'); ?>" method="post" class="form formAdd">
+                <form action="#" method="post" class="form formAdd">
                     <div class="form-content-wrap">
                         <h1>Check ur order out</h1>
                         <div class="form-input-group">
@@ -32,12 +32,13 @@
                                     required></textarea>
                             </div>
                             <div class="form-buttons">
-                                <button class="btn btn-primary">QRIS</button>
                                 <button class="btn btn-primary">Cash</button>
+                                <button id="pay-button">QRIS</button>
                             </div>
                         </div>
                     </div>
                 </form>
+                <pre><div id="result-json">JSON result will appear here after payment:<br></div></pre> 
             </div>
         </div>
     </div>
