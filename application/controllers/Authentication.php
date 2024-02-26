@@ -49,12 +49,19 @@ class Authentication extends CI_Controller
                 if ($user) {
                     // Jika autentikasi berhasil, atur sesi
                     $userstatus = $this->Auth->get_userstatus($username); // Mendapatkan status pengguna dari database
+                    $userphone = $this->Auth->get_userphone($username); // Mendapatkan phone pengguna dari database
+                    $useremail = $this->Auth->get_useremail($username); // Mendapatkan email pengguna dari database
+
                     $user_data = array(
                         'userID' => $user->userID,
                         'userName' => $user->userName,
                         'userStatus' => $userstatus,
+                        'userEmail' => $useremail,
+                        'userPhone' => $userphone,
+                        'userPassword' => $userpassword,
                         'logged_in' => true
                     );
+
                     $this->session->set_userdata($user_data);
 
                     // Redirect based on user status

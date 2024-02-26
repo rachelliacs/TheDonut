@@ -39,18 +39,31 @@ class Auth extends CI_Model
         $this->db->insert('tb_user', $data_user);
     }
 
-    public function get_userstatus($username)
+    public function get_user_data($username)
     {
         $query = $this->db->get_where(
             'tb_user',
             array('userName' => $username)
         );
-        if ($query->num_rows() == 1) {
-            $user = $query->row_array();
-            return $user['userStatus'];
-        } else {
-            return null;
-        }
+        return $query->row_array();
+    }
+
+    public function get_userstatus($username)
+    {
+        $user = $this->get_user_data($username);
+        return isset($user['userStatus']) ? $user['userStatus'] : null;
+    }
+
+    public function get_userphone($username)
+    {
+        $user = $this->get_user_data($username);
+        return isset($user['userPhone']) ? $user['userPhone'] : null;
+    }
+
+    public function get_useremail($username)
+    {
+        $user = $this->get_user_data($username);
+        return isset($user['userEmail']) ? $user['userEmail'] : null;
     }
 
     function delete($productID)

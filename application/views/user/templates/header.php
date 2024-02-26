@@ -96,7 +96,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         <div class=" dropdown-divider mt-3 mb-2"></div>
                                     </div>
                                     <a aria-selected="false" class="dropdown-item" role="button" tabindex="0"
-                                        href="profile/edit"><i class="fe fe-user me-2"></i> Edit
+                                        href="<?= base_url(); ?>edit"><i class="fe fe-user me-2"></i> Edit
                                         Profile</a>
                                     <a class="dropdown-item" role="button" tabindex="0" href="authentication/logout"><i
                                             class="fe fe-power me-2"></i>Log Out</a>

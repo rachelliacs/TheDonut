@@ -53,20 +53,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                             <h5 class="mb-1">
                                                 <?= $this->session->userdata('userName'); ?>
                                             </h5>
-                                            <a class="text-inherit fs-6" href="<?= base_url(); ?>profile">View my
-                                                profile</a>
+                                            <!-- <a class="text-inherit fs-6" href="<?= base_url(); ?>profile">View my
+                                                profile</a> -->
                                         </div>
                                         <div class=" dropdown-divider mt-3 mb-2"></div>
                                     </div>
-                                    <a aria-selected="false" class="dropdown-item" role="button" tabindex="0"
+                                    <!-- <a aria-selected="false" class="dropdown-item" role="button" tabindex="0"
                                         href="profile/edit"><i class="fe fe-user me-2"></i> Edit
-                                        Profile</a>
+                                        Profile</a> -->
                                     <a class="dropdown-item" role="button" tabindex="0"
                                         href="<?= base_url(); ?>authentication/logout"><i class="fe fe-power me-2"></i>Log
                                         Out</a>
                                 </div>
                             </div>
-                            <a href="<?= base_url(); ?>authentication/logout" class="btn btn-primary">Logout</a>
+                            <!-- <a href="<?= base_url(); ?>authentication/logout" class="btn btn-primary">Logout</a> -->
                             <?php if ($this->session->flashdata('logout_message')) { ?>
                                 <span class="logout-message">
                                     <?= $this->session->flashdata('logout_message'); ?>
