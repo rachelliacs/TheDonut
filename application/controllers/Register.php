@@ -50,6 +50,6 @@ class Register extends CI_Controller
             'userStatus' => 'customer'
         );
         $this->db->insert('tb_user', $data);
-        redirect('login');
+        redirect('authentication');
     }
 }

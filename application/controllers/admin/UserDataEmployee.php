@@ -8,10 +8,13 @@ class UserDataEmployee extends CI_Controller
         parent::__construct();
         $this->load->model('Auth');
         $this->load->model('Data');
+        $this->load->library('session');
     }
 
     public function index()
     {
+        $this->Auth->check_admin(); // Memeriksa apakah pengguna adalah admin
+
         $data['title'] = 'Employee';
         $table = 'tb_store';
 

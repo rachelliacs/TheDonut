@@ -12,6 +12,8 @@ class ShoppingCart extends CI_Controller
 
     public function index()
     {
+        $this->Auth->check_customer(); // Memeriksa apakah pengguna adalah customer
+
         $data['title'] = 'Cart';
         $table = 'tb_store';
 
@@ -45,22 +47,14 @@ class ShoppingCart extends CI_Controller
             echo "Error retrieving data from the database.";
         }
 
-        // Check if user is logged in
-        if (!$this->session->userdata('logged_in')) {
-            // User is not logged in, redirect to login page
-            redirect('login');
-        } else {
-            $this->load->view('user/templates/header', $data);
-            $this->load->view('user/pages/shoppingcart', $data);
-            $this->load->view('user/templates/footer');
-        }
+        $this->load->view('user/templates/header', $data);
+        $this->load->view('user/pages/shoppingcart', $data);
+        $this->load->view('user/templates/footer');
     }
 
     public function add_to_cart($productid)
     {
-        // Add product to cart
         $this->Cart->add_to_cart($productid);
-        // Redirect to cart page
         redirect('shoppingcart');
     }
 

@@ -31,10 +31,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         </a>
                     </div>
                 </div>
+                <div class="col-lg-6">
+
+                </div>
                 <div class="col-lg-4 col-md-4">
                     <?php
-                    $current_page = $this->uri->segment(1); // Get the current page URI segment
-                    if (!$this->session->userdata('logged_in') && ($current_page != 'login' && $current_page != 'register')) {
+                    $current_page = $this->uri->segment(1);
+                    if (!$this->session->userdata('logged_in') && ($current_page != 'authentication' && $current_page != 'register')) {
                         ?>
                         <div class="form-buttons">
                             <a href="<?= base_url(); ?>shoppingcart" class=""><svg width="24" height="24"
@@ -52,11 +55,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </a>
-                            <!-- <a href="<?= base_url(); ?>login" class="btn btn-primary">Login</a> -->
-                            <!-- <a href="<?= base_url(); ?>register" class="btn btn-primary">Register</a> -->
                         </div>
                     <?php } ?>
-                    <?php if ($this->session->userdata('logged_in')) { ?>
+                    <?php if ($this->session->userdata('logged_in') && ($current_page != 'authentication' && $current_page != 'register')) { ?>
                         <div class="form-buttons">
                             <a href="<?= base_url(); ?>shoppingcart" class=""><svg width="24" height="24"
                                     viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -87,7 +88,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     <div class="px-4 pb-0 pt-2  ">
                                         <div class="lh-1 ">
                                             <h5 class="mb-1">
-                                                <?= $this->session->userdata('username'); ?>
+                                                <?= $this->session->userdata('userName'); ?>
                                             </h5>
                                             <a class="text-inherit fs-6" href="<?= base_url(); ?>profile">View my
                                                 profile</a>
@@ -97,11 +98,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     <a aria-selected="false" class="dropdown-item" role="button" tabindex="0"
                                         href="profile/edit"><i class="fe fe-user me-2"></i> Edit
                                         Profile</a>
-                                    <a class="dropdown-item" role="button" tabindex="0" href="login/logout"><i
+                                    <a class="dropdown-item" role="button" tabindex="0" href="authentication/logout"><i
                                             class="fe fe-power me-2"></i>Log Out</a>
                                 </div>
                             </div>
-                            <!-- <a href="login/logout" class="btn btn-primary">Logout</a> -->
                             <?php if ($this->session->flashdata('logout_message')) { ?>
                                 <span class="logout-message">
                                     <?= $this->session->flashdata('logout_message'); ?>

@@ -1,13 +1,14 @@
 <?php
 defined("BASEPATH") or exit("No direct script access allowed");
 
-class Home extends CI_Controller
+class Dashboard extends CI_Controller
 {
         function __construct()
         {
                 parent::__construct();
                 $this->load->model('Auth');
                 $this->load->model('Data');
+                $this->load->library('session');
         }
 
         public function index()
@@ -48,7 +49,5 @@ class Home extends CI_Controller
                 $this->load->view('user/templates/header', $data);
                 $this->load->view('user/pages/home', $data);
                 $this->load->view('user/templates/footer');
-
-
         }
 }

@@ -9,10 +9,13 @@ class ProductData extends CI_Controller
         $this->load->model('Auth');
         $this->load->model('Data');
         $this->load->library('upload');
+        $this->load->library('session');
     }
 
     public function index()
     {
+        $this->Auth->check_employee(); // Memeriksa apakah pengguna adalah employee
+
         $data['title'] = 'Product';
         $table = 'tb_store';
 

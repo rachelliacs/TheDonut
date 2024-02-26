@@ -11,6 +11,8 @@ class Checkout extends CI_Controller
 
     public function index()
     {
+        $this->Auth->check_customer(); // Memeriksa apakah pengguna adalah customer
+
         $data['title'] = 'Checkout';
         $table = 'tb_store';
 
@@ -23,14 +25,8 @@ class Checkout extends CI_Controller
         }
         $data['StoreName'] = $StoreName;
 
-        // Check if user is logged in
-        if (!$this->session->userdata('logged_in')) {
-            // User is not logged in, redirect to login page
-            redirect('login');
-        } else {
-            $this->load->view('user/templates/header', $data);
-            $this->load->view('user/pages/checkout', $data);
-            $this->load->view('user/templates/footer');
-        }
+        $this->load->view('user/templates/header', $data);
+        $this->load->view('user/pages/checkout', $data);
+        $this->load->view('user/templates/footer');
     }
 }

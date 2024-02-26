@@ -1,19 +1,5 @@
 <section class="section">
     <div class="container">
-        <?php
-        if ($this->session->flashdata('error') != '') {
-            echo '<div class="alert alert-danger" role="alert">';
-            echo $this->session->flashdata('error');
-            echo '</div>';
-        }
-        ?>
-        <?php
-        if ($this->session->flashdata('success_register') != '') {
-            echo '<div class="alert alert-info" role="alert">';
-            echo $this->session->flashdata('success_register');
-            echo '</div>';
-        }
-        ?>
         <form method="post" action="<?= base_url(); ?>admin/login/process" class="form">
             <div class="form-content-wrap">
                 <h1>Employee Login</h1>
@@ -29,6 +15,13 @@
                             placeholder="Enter your password">
                     </div>
                 </div>
+                <?php
+                if (validation_errors()) {
+                    echo '<div class="alert alert-danger" role="alert">';
+                    echo validation_errors();
+                    echo '</div>';
+                }
+                ?>
                 <div class="form-buttons">
                     <button type="submit" class="btn btn-primary">Login</button>
                 </div>
@@ -36,3 +29,10 @@
         </form>
     </div>
 </section>
+<?php
+if ($this->session->flashdata('error') != '') {
+    echo '<script type="text/javascript">';
+    echo 'alert("Login gagal! Silakan cek kembali username dan password Anda.");';
+    echo '</script>';
+}
+?>

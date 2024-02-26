@@ -8,10 +8,13 @@ class OrderManual extends CI_Controller
         parent::__construct();
         $this->load->model('Auth');
         $this->load->model('Data');
+        $this->load->library('session');
     }
 
     public function index()
     {
+        $this->Auth->check_employee(); // Memeriksa apakah pengguna adalah employee
+
         $data['title'] = 'Order Manual';
         $table = 'tb_store';
 
@@ -61,6 +64,7 @@ class OrderManual extends CI_Controller
         $this->load->view('employee/templates/contentTop');
         $this->load->view('employee/pages/orderManual');
         $this->load->view('employee/templates/contentBottom');
+        $this->load->view('employee/templates/footer');
     }
 
     public function add()

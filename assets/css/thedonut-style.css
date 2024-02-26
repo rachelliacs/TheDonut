@@ -330,6 +330,7 @@ a.btn svg {
 
 /* FORM */
 .row {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
 }
@@ -655,7 +656,13 @@ input[type="number"] {
 // END:: HOME PAGE STYLE
 */
 
-
+.user-image {
+    max-width: 20vw;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
 
 /* 
 // START:: NEW BOOTSTRAP STYLE

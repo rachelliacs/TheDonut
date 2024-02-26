@@ -66,7 +66,7 @@
     });
 </script>
 <script>
-    AOS.init();
+    // AOS.init();
 </script>
 <script>
     document.querySelector('.dropdown-toggle').addEventListener('click', function () {
@@ -99,7 +99,7 @@
     });
 </script>
 <!-- Local JS -->
-<script src="<?= base_url(); ?>application/assets/js/script.js"></script>
+<!-- <script src="<?= base_url(); ?>application/assets/js/script.js"></script> -->
 <script src="<?= base_url(); ?>templates/Ultras/js/jquery-1.11.0.min.js"></script>
 <script src="<?= base_url(); ?>templates/Ultras/js/plugins.js"></script>
 <script src="<?= base_url(); ?>templates/Ultras/js/script.js"></script>

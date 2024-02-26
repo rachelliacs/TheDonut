@@ -1,6 +1,6 @@
 <div class="section section-auth padding-small">
     <div class="container">
-        <form method="post" action="<?= base_url(); ?>login/process" class="form">
+        <form method="post" action="<?= base_url(); ?>authentication/login" class="form">
             <div class="form-content-wrap">
                 <h1>Login</h1>
                 <div class="form-input-group">
@@ -23,7 +23,7 @@
                 }
                 ?>
                 <div class="form-buttons">
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button name="submit" type="submit" class="btn btn-primary">Login</button>
                     <a href="<?= base_url(); ?>register" class="btn btn-primary">Register</a>
                 </div>
             </div>

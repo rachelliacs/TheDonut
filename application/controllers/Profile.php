@@ -7,10 +7,13 @@ class Profile extends CI_Controller
         $this->load->model('Auth');
         $this->load->model('Data');
         $this->load->library('session');
+        $this->Auth->check_customer(); // Memeriksa apakah pengguna adalah customer
     }
 
     public function index()
     {
+
+
         $data['title'] = 'Profile';
         $table = 'tb_store';
 
@@ -28,15 +31,9 @@ class Profile extends CI_Controller
             echo "Error retrieving data from the database.";
         }
 
-        // Check if user is logged in
-        if (!$this->session->userdata('logged_in')) {
-            // User is not logged in, redirect to login page
-            redirect('login');
-        } else {
-            $this->load->view('user/templates/header', $data);
-            $this->load->view('other/profile/profile', $data);
-            $this->load->view('user/templates/footer');
-        }
+        $this->load->view('user/templates/header', $data);
+        $this->load->view('other/profile/profile', $data);
+        $this->load->view('user/templates/footer');
     }
 
     public function edit()
@@ -57,14 +54,9 @@ class Profile extends CI_Controller
         } else {
             echo "Error retrieving data from the database.";
         }
-        // Check if user is logged in
-        if (!$this->session->userdata('logged_in')) {
-            // User is not logged in, redirect to login page
-            redirect('login');
-        } else {
-            $this->load->view('user/templates/header', $data);
-            $this->load->view('other/profile/edit', $data);
-            $this->load->view('user/templates/footer');
-        }
+
+        $this->load->view('user/templates/header', $data);
+        $this->load->view('other/profile/edit', $data);
+        $this->load->view('user/templates/footer');
     }
 }

@@ -6,14 +6,12 @@ class Product extends CI_Controller
         parent::__construct();
         $this->load->model('Auth');
         $this->load->model('Data');
+        $this->load->library('session');
     }
 
     public function index()
     {
-        $data['title'] = 'Product';
-        $this->load->view('user/templates/header', $data);
-        $this->load->view('pages/product/product');
-        $this->load->view('user/templates/footer');
+        $this->Auth->check_customer(); // Memeriksa apakah pengguna adalah customer
     }
 
     public function view($productid)
@@ -30,12 +28,10 @@ class Product extends CI_Controller
         }
         $data['StoreName'] = $StoreName;
 
-        // Get the product by its ID
         $product = $this->Data->getProductById($productid);
         if ($product) {
             $data['product'] = $product;
         } else {
-            // Product not found, handle the error (e.g., show a 404 page)
             show_404();
         }
 
@@ -46,21 +42,15 @@ class Product extends CI_Controller
             echo "Error retrieving data from the database.";
         }
 
-        $query = $this->db->get('tb_productImages');
+        $query = $this->db->get('tb_product');
         if ($query) {
             $data['smallImages'] = $query->result_array();
         } else {
             echo "Error retrieving data from the database.";
         }
 
-        // Check if user is logged in
-        if (!$this->session->userdata('logged_in')) {
-            // User is not logged in, redirect to login page
-            redirect('login');
-        } else {
-            $this->load->view('user/templates/header', $data);
-            $this->load->view('user/pages/singleProduct', $data);
-            $this->load->view('user/templates/footer');
-        }
+        $this->load->view('user/templates/header', $data);
+        $this->load->view('user/pages/singleProduct', $data);
+        $this->load->view('user/templates/footer');
     }
 }

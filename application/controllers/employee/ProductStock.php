@@ -8,10 +8,13 @@ class ProductStock extends CI_Controller
         parent::__construct();
         $this->load->model('Auth');
         $this->load->model('Data');
+        $this->load->library('session');
     }
 
     public function index()
     {
+        $this->Auth->check_employee(); // Memeriksa apakah pengguna adalah employee
+
         $data['title'] = 'Product Stock';
         $table = 'tb_store';
 
@@ -35,5 +38,6 @@ class ProductStock extends CI_Controller
         $this->load->view('employee/templates/contentTop');
         $this->load->view('admin/pages/productStock');
         $this->load->view('employee/templates/contentBottom');
+        $this->load->view('employee/templates/footer');
     }
 }
