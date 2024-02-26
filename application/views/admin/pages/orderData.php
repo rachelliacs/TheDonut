@@ -27,9 +27,9 @@
                     </td>
                     <td>
                         <ul>
-                            <?php foreach ($selected_products as $option): ?>
+                            <?php foreach ($orders as $option): ?>
                                 <li>
-                                    <?php echo $option; ?>
+                                    <?php echo $option['productName']; ?>
                                 </li>
                             <?php endforeach; ?>
                         </ul>

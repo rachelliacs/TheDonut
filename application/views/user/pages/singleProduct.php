@@ -8,6 +8,16 @@
                     alt="<?php echo $product['productName']; ?>">
                 <!-- Small images -->
                 <div class="row mt-4" id="smallImagesRow">
+                    <?php foreach ($products as $index => $image): ?>
+                        <?php if ($image['productID'] == $product['productID']): ?>
+                            <div class="col-md-3">
+                                <img src="<?= base_url(); ?>assets/img/<?= $image['productImage']; ?>" alt="Small Image"
+                                    class="img-fluid product-small-image"
+                                    data-small-image="<?= base_url(); ?>assets/img/<?= $image['productImage']; ?>"
+                                    data-small-image-index="<?= $index; ?>">
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                     <?php foreach ($smallImages as $index => $image): ?>
                         <?php if ($image['productID'] == $product['productID']): ?>
                             <div class="col-md-3">

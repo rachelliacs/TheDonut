@@ -27,9 +27,14 @@ class Dashboard extends CI_Controller
                 }
                 $data['StoreName'] = $StoreName;
 
+                $data['total_products'] = $this->Data->getTotal('tb_product');
+                $data['total_users'] = $this->Data->getTotal('tb_user');
+                $data['total_stocks'] = $this->Data->getSum('tb_product', 'productStock');
+                $data['total_incomes'] = $this->Data->getSum('tb_order', 'orderTotalPrice');
+
                 $this->load->view('admin/templates/header', $data);
                 $this->load->view('admin/templates/contentTop');
-                $this->load->view('admin/pages/dashboard');
+                $this->load->view('admin/pages/dashboard', $data);
                 $this->load->view('admin/templates/contentBottom');
                 $this->load->view('admin/templates/footer');
         }

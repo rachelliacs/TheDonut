@@ -38,7 +38,7 @@
                         </div>
                     </div>
                 </form>
-                <pre><div id="result-json">JSON result will appear here after payment:<br></div></pre> 
+                <!-- <pre><div id="result-json">JSON result will appear here after payment:<br></div></pre>  -->
             </div>
         </div>
     </div>

@@ -11,6 +11,18 @@ class Data extends CI_Model
         return $this->db->get_where($table, $condition)->row_array();
     }
 
+    public function getTotal($table, $column = '*', $operation = 'COUNT(*)')
+    {
+        $query = $this->db->query("SELECT $operation as total FROM $table");
+        return $query->row()->total;
+    }
+
+    public function getSum($table, $column)
+    {
+        $query = $this->db->query("SELECT SUM($column) as total_sum FROM $table");
+        return $query->row()->total_sum;
+    }
+
     public function getDataById($table, $idField, $idValue)
     {
         return $this->db->get_where($table, array($idField => $idValue))->row();

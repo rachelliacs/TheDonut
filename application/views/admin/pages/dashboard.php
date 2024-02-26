@@ -18,7 +18,9 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="fw-bold">17</h3>
+                    <h3 class="fw-bold">
+                        <?php echo $total_products; ?>
+                    </h3>
                 </div>
             </div>
         </div>
@@ -44,7 +46,9 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="fw-bold">100</h3>
+                    <h3 class="fw-bold">
+                        <?php echo $total_stocks; ?>
+                    </h3>
                 </div>
             </div>
         </div>
@@ -59,11 +63,13 @@
             <div class="card-body">
                 <div>
                     <div>
-                        <h5 class="mb-0">Profit</h5>
+                        <h5 class="mb-0">Income</h5>
                     </div>
                 </div>
                 <div>
-                    <h3 class="fw-bold">100,000.0 IDR</h3>
+                    <h3 class="fw-bold">
+                        <?php echo $total_incomes; ?>0 IDR
+                    </h3>
                 </div>
             </div>
         </div>
@@ -85,7 +91,9 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="fw-bold">45</h3>
+                    <h3 class="fw-bold">
+                        <?php echo $total_users; ?>
+                    </h3>
                 </div>
             </div>
         </div>
