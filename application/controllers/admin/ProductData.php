@@ -54,33 +54,38 @@ class ProductData extends CI_Controller
 
     public function add()
     {
-        $config['upload_path'] = './assets/img/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = 2048; // 2MB max size
+        $data = array(
+            'productName' => $this->input->post('productname'),
+            'productCategoryID' => $this->input->post('productcategoryid'),
+            'productPrice' => $this->input->post('productprice'),
+            'productDesc' => $this->input->post('productdesc'),
+            'productSellingPrice' => $this->input->post('productsellingprice'),
+            'productStock' => $this->input->post('productstock'),
+        );
 
-        $this->upload->initialize($config);
+        if (!empty($_FILES['productimage']['name'])) { // Check if a file has been selected
+            $config['upload_path'] = './assets/img/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = 2048; // 2MB max size
 
-        if ($this->upload->do_upload('productimage')) {
-            $upload_data = $this->upload->data();
-            $image_filename = $upload_data['file_name'];
+            $this->load->library('upload', $config);
 
-            $data = array(
-                'productName' => $this->input->post('productname'),
-                'productCategoryID' => $this->input->post('productcategoryid'),
-                'productImage' => $image_filename,
-                'productPrice' => $this->input->post('productprice'),
-                'productDesc' => $this->input->post('productdesc'),
-                'productSellingPrice' => $this->input->post('productsellingprice'),
-                'productStock' => $this->input->post('productstock'),
-            );
-
-            $this->db->insert('tb_product', $data);
-            redirect('admin/productData');
-        } else {
-            $error = array('error' => $this->upload->display_errors());
-            print_r($error); // Handle error appropriately
+            if ($this->upload->do_upload('productimage')) {
+                $upload_data = $this->upload->data();
+                $image_filename = $upload_data['file_name'];
+                $data['productImage'] = $image_filename;
+            } else {
+                $error = array('error' => $this->upload->display_errors());
+                print_r($error); // Handle error appropriately
+                return; // Stop further execution
+            }
         }
+
+        $this->db->insert('tb_product', $data);
+        redirect('admin/productData');
     }
+
+
 
     public function update()
     {
