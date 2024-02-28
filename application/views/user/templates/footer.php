@@ -31,26 +31,43 @@
         </div>
     </div>
 </footer>
+<script>
+    function confirmDeleteProductCart(cartID) {
+        if (confirm('Are you sure you want to delete this cart?')) {
+            // If user confirms, submit the form with the cartID
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '<?php echo base_url('shoppingcart/delete'); ?>';
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'cartID';
+            input.value = cartID;
+            form.appendChild(input);
+            document.body.appendChild(form);
+            form.submit();
+        }
+    }
+</script>
 <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-eaP5uTo2Ar44qT5R"></script>
-    <script type="text/javascript">
-      document.getElementById('pay-button').onclick = function(){
+<script type="text/javascript">
+    document.getElementById('pay-button').onclick = function () {
         // SnapToken acquired from previous step
-        snap.pay('<?=$snapToken?>', {
-          // Optional
-          onSuccess: function(result){
+        snap.pay('<?= $snapToken ?>', {
+            // Optional
+            onSuccess: function (result) {
             /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-          },
-          // Optional
-          onPending: function(result){
+            },
+            // Optional
+            onPending: function (result) {
             /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-          },
-          // Optional
-          onError: function(result){
+            },
+            // Optional
+            onError: function (result) {
             /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-          }
+            }
         });
-      };
-    </script>
+    };
+</script>
 <script>
     // EDITS
     // Event listener for edit button click

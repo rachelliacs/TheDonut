@@ -48,7 +48,7 @@
 										<?php echo $product['productName']; ?>
 									</h3>
 									<div class="item-price text-primary">
-										<?php echo $product['productPrice']; ?>0 IDR
+										<?php echo $product['productSellingPrice']; ?>0 IDR
 									</div>
 								</div>
 							</div>
@@ -76,7 +76,7 @@
 												<?php echo $product['productName']; ?>
 											</h3>
 											<div class="item-price text-primary">
-												<?php echo $product['productPrice']; ?>0 IDR
+												<?php echo $product['productSellingPrice']; ?>0 IDR
 											</div>
 										</div>
 									</div>

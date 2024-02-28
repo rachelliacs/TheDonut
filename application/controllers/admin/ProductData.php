@@ -64,7 +64,7 @@ class ProductData extends CI_Controller
         );
 
         if (!empty($_FILES['productimage']['name'])) { // Check if a file has been selected
-            $config['upload_path'] = './assets/img/';
+            $config['upload_path'] = '/assets/img/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = 2048; // 2MB max size
 
@@ -97,7 +97,7 @@ class ProductData extends CI_Controller
 
         // Check if a new image is uploaded
         if (!empty($_FILES['productimage']['name'])) {
-            $config['upload_path'] = './assets/img/';
+            $config['upload_path'] = '/assets/img/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = 2048; // 2MB max size, adjust as needed
 

@@ -6,6 +6,7 @@ class Product extends CI_Controller
         parent::__construct();
         $this->load->model('Auth');
         $this->load->model('Data');
+        $this->load->model('Cart');
         $this->load->library('session');
     }
 
@@ -60,4 +61,28 @@ class Product extends CI_Controller
         $this->load->view('user/pages/singleProduct', $data);
         $this->load->view('user/templates/footer');
     }
+
+    public function addToCart($productid)
+    {
+        $this->Auth->check_customer();
+
+        $userid = $this->session->userdata('userID');
+        $product = $this->Data->getProductById($productid);
+        $cartquantity = $this->input->post('cartquantity');
+
+        if (!$product) {
+            show_404();
+        }
+
+        $cart_data = array(
+            'productid' => $productid,
+            'cartquantity' => $cartquantity,
+            'userid' => $userid
+        );
+
+        $this->Cart->addToCart($cart_data);
+
+        redirect('shoppingcart');
+    }
+
 }

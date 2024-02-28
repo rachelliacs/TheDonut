@@ -7,6 +7,7 @@ class ShoppingCart extends CI_Controller
         $this->load->model('Auth');
         $this->load->model('Data');
         $this->load->model('Cart');
+        $this->load->model('Product');
         $this->load->library('session');
         $this->load->config('midtrans');
         require_once(APPPATH . 'libraries/Midtrans.php');
@@ -49,15 +50,28 @@ class ShoppingCart extends CI_Controller
             echo "Error retrieving data from the database.";
         }
 
+        $this->db->select('tb_cart.*, tb_product.*, tb_user.*');
+        $this->db->from('tb_cart');
+        $this->db->join('tb_product', 'tb_product.productID = tb_cart.productID');
+        $this->db->join('tb_user', 'tb_user.userID = tb_cart.userID');
+
+        $query = $this->db->get();
+        if ($query) {
+            $data['carts'] = $query->result_array();
+        } else {
+            echo "Error retrieving data from the database.";
+        }
+
         $this->load->view('user/templates/header', $data);
         $this->load->view('user/pages/shoppingcart', $data);
         $this->load->view('user/templates/footer');
     }
 
-    public function add_to_cart($productid)
+    public function delete()
     {
-        $this->Cart->add_to_cart($productid);
+        $cartid = $this->input->post('cartID');
+        $this->load->model('Product');
+        $this->Product->deleteProductCart('tb_cart', $cartid);
         redirect('shoppingcart');
     }
-
 }

@@ -36,7 +36,7 @@
                 </h2>
                 <p>
                     <strong>Price:</strong>
-                    <?php echo $product['productPrice']; ?>0 IDR
+                    <?php echo $product['productSellingPrice']; ?>0 IDR
                 </p>
                 <p>
                     <strong>Stock:</strong>
@@ -53,7 +53,8 @@
             </div>
             <div class="col-md-3">
                 <div class="sticky-cart">
-                    <form id="add-to-cart-form" class="form formAdd">
+                    <form action="<?php echo base_url('product/addToCart/' . $product['productID']); ?>" method="post"
+                        id="add-to-cart-form" class="form formAdd">
                         <div class="form-content-wrap">
                             <p>Amount Order</p>
                             <input type="hidden" name="productid" value="<?php echo $product['productID']; ?>">
