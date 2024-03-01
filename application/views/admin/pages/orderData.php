@@ -7,7 +7,6 @@
             <tr>
                 <th scope="col">Order ID</th>
                 <th scope="col">Customer</th>
-                <!-- <th scope="col">Chasier</th> -->
                 <th scope="col">Products</th>
                 <th scope="col">Total Price</th>
                 <th scope="col">Date</th>
@@ -18,34 +17,33 @@
         </thead>
         <tbody>
             <?php foreach ($orders as $order): ?>
-                <tr>
-                    <th scope="row">#
-                        <?php echo $order['orderID']; ?>
-                    </th>
-                    <td>
-                        <?php echo $order['userName']; ?>
-                    </td>
-                    <td>
-                        <ul>
-                            <?php foreach ($orders as $option): ?>
-                                <li>
-                                    <?php echo $option['productName']; ?>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </td>
-                    <td>
-                        <?php echo $order['orderTotalPrice']; ?>0 IDR
-                    </td>
-                    <td>
-                        <?php echo $order['orderDate']; ?>
-                    </td>
-                    <td>
-                        <?php echo $order['orderStatus']; ?>
-                    </td>
-                    <td>
-                        <?php echo $order['orderMethod']; ?>
-                    </td>
+                <th scope="row">#
+                    <?php echo $order['orderID']; ?>
+                </th>
+                <td>
+                    <?php echo $order['userName']; ?>
+                </td>
+                <td>
+                    <ul>
+                        <?php foreach ($orders as $option): ?>
+                            <li>
+                                <?php echo $option['productID']; ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </td>
+                <td>
+                    <?php echo $order['orderTotalPrice']; ?>0 IDR
+                </td>
+                <td>
+                    <?php echo $order['orderDate']; ?>
+                </td>
+                <td>
+                    <?php echo $order['orderStatus']; ?>
+                </td>
+                <td>
+                    <?php echo $order['orderMethod']; ?>
+                </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

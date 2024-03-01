@@ -8,6 +8,8 @@
 <link rel="stylesheet" type="text/css" media="all"
     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <!-- Vendor CSS Files -->
 <link href="<?= base_url(); ?>assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -28,8 +30,7 @@
 <!-- Local JS -->
 <script src="<?= base_url(); ?>assets/js/modernizr.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript"
-      src="https://app.sandbox.midtrans.com/snap/snap.js"
-      data-client-key="SB-Mid-client-4Fvl68M5QK7M-sIx">
-</script>
+<script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
+    data-client-key="SB-Mid-client-4Fvl68M5QK7M-sIx">
+    </script>
 <!--  -->

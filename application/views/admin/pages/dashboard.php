@@ -68,7 +68,8 @@
                 </div>
                 <div>
                     <h3 class="fw-bold">
-                        <?php echo $total_incomes; ?>0 IDR
+
+                        <?php echo number_format($total_incomes, 0, '.', '.'); ?> IDR
                     </h3>
                 </div>
             </div>

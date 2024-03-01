@@ -17,18 +17,23 @@
                         <h1>Check ur order out</h1>
                         <div class="form-input-group">
                             <div class="form-input">
-                                <label class="form-label" for="name">Name:</label>
-                                <input class="form-control" type="text" id="name" name="name"
+                                <label class="form-label" for="username">Name:</label>
+                                <input class="form-control" type="text" id="username" name="username"
                                     placeholder="Enter your name" required>
                             </div>
                             <div class="form-input">
-                                <label class="form-label" for="email">Email:</label>
-                                <input class="form-control" type="email" id="email" name="email"
+                                <label class="form-label" for="useremail">Email:</label>
+                                <input class="form-control" type="email" id="useremail" name="useremail"
                                     placeholder="Enter your email" required>
                             </div>
                             <div class="form-input">
-                                <label class="form-label" for="address">Address:</label>
-                                <textarea id="address" name="address" placeholder="Enter your home address"
+                                <label class="form-label" for="userphone">Phone:</label>
+                                <input class="form-control" type="text" id="userphone" name="userphone"
+                                    placeholder="Enter your phone number" required>
+                            </div>
+                            <div class="form-input">
+                                <label class="form-label" for="useraddress">Address:</label>
+                                <textarea id="useraddress" name="useraddress" placeholder="Enter your home address"
                                     required></textarea>
                             </div>
                             <div class="form-buttons">

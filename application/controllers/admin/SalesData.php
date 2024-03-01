@@ -34,15 +34,26 @@ class SalesData extends CI_Controller
             echo "Error retrieving data from the database.";
         }
 
-        $this->db->select('tb_sales.*, tb_order.orderDate, tb_user.userName, tb_product.productName');
-        $this->db->from('tb_sales');
-        $this->db->join('tb_order', 'tb_order.orderID = tb_sales.orderID');
-        $this->db->join('tb_user', 'tb_user.userID = tb_sales.userID');
-        $this->db->join('tb_product', 'tb_product.productID = tb_sales.productID');
+        $this->db->select('tb_order.*, tb_user.*, tb_cart.*');
+        $this->db->from('tb_order');
+        $this->db->join('tb_user', 'tb_user.userID = tb_order.userID');
+        $this->db->join('tb_cart', 'tb_cart.cartID = tb_order.cartID');
 
         $query = $this->db->get();
         if ($query) {
             $data['sales'] = $query->result_array();
+        } else {
+            echo "Error retrieving data from the database.";
+        }
+
+        $this->db->select('tb_cart.*, tb_product.*, tb_user.*');
+        $this->db->from('tb_cart');
+        $this->db->join('tb_product', 'tb_product.productID = tb_cart.productID');
+        $this->db->join('tb_user', 'tb_user.userID = tb_cart.userID');
+
+        $query = $this->db->get();
+        if ($query) {
+            $data['carts'] = $query->result_array();
         } else {
             echo "Error retrieving data from the database.";
         }

@@ -31,23 +31,18 @@
         </div>
     </div>
 </footer>
-<script>
-    function confirmDeleteProductCart(cartID) {
-        if (confirm('Are you sure you want to delete this cart?')) {
-            // If user confirms, submit the form with the cartID
-            var form = document.createElement('form');
-            form.method = 'POST';
-            form.action = '<?php echo base_url('shoppingcart/delete'); ?>';
-            var input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'cartID';
-            input.value = cartID;
-            form.appendChild(input);
-            document.body.appendChild(form);
-            form.submit();
-        }
-    }
-</script>
+<!-- <script>
+    document.getElementById('checkout-btn').onclick = function () {
+        // Get the subtotal value
+        var subtotal = <?= $subtotal ?>;
+
+        // Store the subtotal in session storage
+        sessionStorage.setItem('subtotal', subtotal);
+
+        // Redirect to the checkout page
+        window.location.href = 'checkout';
+    };
+</script> -->
 <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-eaP5uTo2Ar44qT5R"></script>
 <script type="text/javascript">
     document.getElementById('pay-button').onclick = function () {
@@ -67,6 +62,60 @@
             }
         });
     };
+    // document.getElementById('pay-button').onclick = function () {
+    //     // Ambil total pembayaran dari subtotal di halaman
+    //     var subtotal = sessionStorage.getItem('subtotal');
+
+    //     // Kirim subtotal ke server menggunakan fetch
+    //     fetch('/thedonut/checkout', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ subtotal: subtotal })
+    //     })
+    //         .then(response => {
+    //             if (!response.ok) {
+    //                 throw new Error('Failed to update subtotal');
+    //             }
+    //             return response.json();
+    //         })
+    //         .then(data => {
+    //             var prefix = 'ORDER';
+    //             var timestamp = Math.floor(Date.now() / 1000);
+    //             var random = Math.floor(Math.random() * 9000) + 1000;
+    //             var orderid = prefix + timestamp + random;
+
+    //             snap.pay('<?= $snapToken ?>', {
+    //                 transaction_details: {
+    //                     order_id: orderid,
+    //                     gross_amount: subtotal
+    //                 },
+    //                 // Konfigurasi onSuccess, onPending, dan onError
+    //             });
+    //         })
+    //         .catch(error => {
+    //             console.error('Error:', error);
+    //             // Handle error jika terjadi kesalahan saat mengirim data subtotal ke server
+    //         });
+    // };
+</script>
+<script>
+    function confirmDeleteProductCart(cartID) {
+        if (confirm('Are you sure you want to delete this cart?')) {
+            // If user confirms, submit the form with the cartID
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '<?php echo base_url('shoppingcart/delete'); ?>';
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'cartID';
+            input.value = cartID;
+            form.appendChild(input);
+            document.body.appendChild(form);
+            form.submit();
+        }
+    }
 </script>
 <script>
     // EDITS

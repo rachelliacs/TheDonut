@@ -53,7 +53,7 @@
             // If user confirms, submit the form with the orderID
             var form = document.createElement('form');
             form.method = 'POST';
-            form.action = '<?php echo base_url('admin/orderdata/delete'); ?>';
+            form.action = '<?php echo base_url('employee/orderdata/delete'); ?>';
             var input = document.createElement('input');
             input.type = 'hidden';
             input.name = 'orderID';

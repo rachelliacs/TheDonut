@@ -672,6 +672,9 @@ input[type="number"] {
 .col-md-12 {
     padding: 0px !important;
 }
+.badge {
+    text-transform: capitalize;
+}
 /* 
 // END:: NEW BOOTSTRAP STYLE
 */

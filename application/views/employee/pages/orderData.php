@@ -7,41 +7,73 @@
             <tr>
                 <th scope="col">Order ID</th>
                 <th scope="col">Customer</th>
-                <th scope="col">Products</th>
-                <th scope="col">Total Price</th>
+                <th scope="col">Item Bought</th>
+                <th scope="col">Total Pay</th>
                 <th scope="col">Date</th>
-                <th scope="col">Status Payment</th>
-                <th scope="col">Method Payment</th>
+                <th scope="col">Payment</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($orders as $order): ?>
+            <?php
+            // Query untuk mengambil total item yang dibeli oleh setiap user
+            $this->db->select('userID, SUM(cartQuantity) AS totalItems');
+            $this->db->from('tb_cart');
+            $this->db->group_by('userID');
+            $query = $this->db->get();
+            $totals = $query->result_array();
+
+            // Buat array untuk menyimpan total item berdasarkan userID
+            $total_items_by_user = array();
+            foreach ($totals as $total) {
+                $total_items_by_user[$total['userID']] = $total['totalItems'];
+            } ?>
+
+            <?php foreach ($sales as $sale): ?>
+                <?php
+                // Ambil total item untuk user yang terkait dengan penjualan saat ini
+                $total_items = isset($total_items_by_user[$sale['userID']]) ? $total_items_by_user[$sale['userID']] : 0;
+                ?>
                 <tr>
-                    <th scope="row">#
-                        <?php echo $order['orderID']; ?>
+                    <?php
+                    // Fetch product names associated with the current sale
+                    $product_names = array();
+                    foreach ($carts as $cart) {
+                        if ($cart['userID'] == $this->session->userdata('userID') && $cart['cartID'] == $sale['cartID']) {
+                            $product_names[] = $cart['productName'];
+                        }
+                    }
+                    ?>
+                    <th scope="row" class="align-middle">
+                        <?= $sale['orderID']; ?>
                     </th>
-                    <td>
-                        <?php echo $order['userName']; ?>
+                    <td class="align-middle">
+                        <?= $sale['userName']; ?>
                     </td>
-                    <td>
-                        <?php echo $order['productName']; ?>
+                    <td class="align-middle">
+                        <?= $total_items; ?>
                     </td>
-                    <td>
-                        <?php echo $order['orderTotalPrice']; ?>0 IDR
+                    <td class="align-middle">
+                        <?php
+                        $subtotal = $sale['orderTotalPrice'];
+                        echo number_format($subtotal, 0, '.', '.');
+                        ?> IDR
                     </td>
-                    <td>
-                        <?php echo $order['orderDate']; ?>
+                    <td class="align-middle">
+                        <?= $sale['orderDate']; ?>
                     </td>
-                    <td>
-                        <?php echo $order['orderStatus']; ?>
-                    </td>
-                    <td>
-                        <?php echo $order['orderMethod']; ?>
+                    <td class="align-middle">
+                        <?= $sale['orderMethod']; ?>
+                        <?php
+                        $badge_color = ($sale['orderStatus'] == 'pending') ? 'badge-warning' : 'badge-success';
+                        ?>
+                        <div class="badge <?= $badge_color; ?>">
+                            <?= $sale['orderStatus']; ?>
+                        </div>
                     </td>
                     <td>
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <button onclick="confirmDeleteOrder(<?php echo $order['orderID']; ?>)" class="btn btn-danger">
+                            <button onclick="confirmDeleteOrder(<?php echo $sale['orderID']; ?>)" class="btn btn-danger">
                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path

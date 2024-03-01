@@ -27,16 +27,99 @@ class Checkout extends CI_Controller
         // Set 3DS transaction for credit card to true
         \Midtrans\Config::$is3ds = true;
 
-        $params = array(
-            'transaction_details' => array(
-                'order_id' => rand(),
-                'gross_amount' => 10000,
-            )
-        );
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Tangkap data form
+            $username = $_POST['username'];
+            $useremail = $_POST['useremail'];
+            $userphone = $_POST['userphone'];
+            $useraddress = $_POST['useraddress'];
 
-        $data = [
-            'snapToken' => \Midtrans\Snap::getSnapToken($params)
-        ];
+            $userid = $_SESSION['userID'];
+
+            $dsn = "mysql:host=localhost;dbname=db_chasierapp";
+            $dsnusername = "thedonutadmin";
+            $dsnpassword = "rESO1A";
+
+
+            try {
+                $conn = new PDO($dsn, $dsnusername, $dsnpassword);
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                // Buat query SQL untuk mengambil produk dari tabel keranjang belanja yang terkait dengan pengguna yang sedang login
+                $sql = "SELECT c.cartID, p.productName, p.productSellingPrice, c.cartQuantity 
+                FROM tb_cart c 
+                JOIN tb_product p ON c.productID = p.productID
+                WHERE c.userID = :userID";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(':userID', $userid);
+                $stmt->execute();
+
+                // Proses hasil query
+                $cartProducts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            } catch (PDOException $e) {
+                echo "Error: " . $e->getMessage();
+            }
+
+            // Tutup koneksi ke database
+            $conn = null;
+
+            $itemDetails = [];
+
+            foreach ($cartProducts as $product) {
+                // Format setiap produk ke dalam struktur yang sesuai dengan Midtrans Snap
+                $cartid = $product['cartID'];
+                $price = $product['productSellingPrice'] * 1000;
+                $item = [
+                    'id' => $cartid, // ID produk
+                    'price' => $price, // Harga produk
+                    'quantity' => $product['cartQuantity'], // Jumlah produk
+                    'name' => $product['productName'] // Nama produk
+                ];
+
+                // Tambahkan produk yang telah diformat ke dalam array $itemDetails
+                $itemDetails[] = $item;
+            }
+
+            // Generate order ID
+            $orderid = rand(); // Or use any other method to generate a unique order ID
+            $transaction_time = date('Y-m-d H:i:s');
+            $subtotal = 0;
+            foreach ($itemDetails as $item) {
+                $subtotal += $item['price'] * $item['quantity'];
+            }
+
+            // Bentuk parameter transaksi
+            $params = array(
+                'transaction_details' => array(
+                    'order_id' => $orderid,
+                    'gross_amount' => $subtotal,
+                    'transaction_time' => $transaction_time
+                ),
+                'customer_details' => array(
+                    'first_name' => $username,
+                    'email' => $useremail,
+                    'phone' => $userphone,
+                    'address' => $useraddress,
+                ),
+                'item_details' => $itemDetails
+            );
+
+            $transaction = array(
+                'orderID' => $orderid,
+                'userID' => $userid,
+                'cartID' => $cartid,
+                'orderDate' => $transaction_time,
+                'orderTotalPrice' => $subtotal
+            );
+
+            $this->db->insert('tb_order', $transaction);
+
+            $data = [
+                'snapToken' => \Midtrans\Snap::getSnapToken($params)
+            ];
+        }
+
         $this->Auth->check_customer(); // Memeriksa apakah pengguna adalah customer
 
         $data['title'] = 'Checkout';

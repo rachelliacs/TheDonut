@@ -117,7 +117,7 @@
 									</div>
 								</div>
 								<a href="<?= base_url('checkout'); ?>" class="btn btn-black btn-lg py-3 btn-block"
-									id="pay-button">Checkout</a>
+									id="checkout-btn">Checkout</a>
 							<?php endif; ?>
 						</div>
 					</div>

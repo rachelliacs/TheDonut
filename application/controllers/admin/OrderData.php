@@ -34,10 +34,10 @@ class OrderData extends CI_Controller
             echo "Error retrieving data from the database.";
         }
 
-        $this->db->select('tb_order.*, tb_user.userName, tb_product.productName');
+        $this->db->select('tb_order.*, tb_user.userName, tb_cart.*');
         $this->db->from('tb_order');
         $this->db->join('tb_user', 'tb_user.userID = tb_order.userID');
-        $this->db->join('tb_product', 'tb_product.productID = tb_order.productID');
+        $this->db->join('tb_cart', 'tb_cart.cartID = tb_order.cartID');
         $query = $this->db->get();
         if ($query) {
             $data['orders'] = $query->result_array();

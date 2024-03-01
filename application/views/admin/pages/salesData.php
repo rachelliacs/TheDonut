@@ -23,36 +23,67 @@
             <tr>
                 <th scope="col">Order ID</th>
                 <th scope="col">Customer</th>
-                <th scope="col">Product</th>
                 <th scope="col">Item Bought</th>
                 <th scope="col">Total Pay</th>
                 <th scope="col">Date</th>
-                <th scope="col">Laba</th>
+                <th scope="col">Payment</th>
             </tr>
         </thead>
         <tbody>
+            <?php
+            // Query untuk mengambil total item yang dibeli oleh setiap user
+            $this->db->select('userID, SUM(cartQuantity) AS totalItems');
+            $this->db->from('tb_cart');
+            $this->db->group_by('userID');
+            $query = $this->db->get();
+            $totals = $query->result_array();
+
+            // Buat array untuk menyimpan total item berdasarkan userID
+            $total_items_by_user = array();
+            foreach ($totals as $total) {
+                $total_items_by_user[$total['userID']] = $total['totalItems'];
+            } ?>
             <?php foreach ($sales as $sale): ?>
+                <?php
+                // Ambil total item untuk user yang terkait dengan penjualan saat ini
+                $total_items = isset($total_items_by_user[$sale['userID']]) ? $total_items_by_user[$sale['userID']] : 0;
+                ?>
                 <tr>
-                    <th scope="row">#
+                    <?php
+                    // Fetch product names associated with the current sale
+                    $product_names = array();
+                    foreach ($carts as $cart) {
+                        if ($cart['userID'] == $this->session->userdata('userID') && $cart['cartID'] == $sale['cartID']) {
+                            $product_names[] = $cart['productName'];
+                        }
+                    }
+                    ?>
+                    <th scope="row" class="align-middle">
                         <?= $sale['orderID']; ?>
                     </th>
-                    <td>
+                    <td class="align-middle">
                         <?= $sale['userName']; ?>
                     </td>
-                    <td>
-                        <?= $sale['productName']; ?>
+                    <td class="align-middle">
+                        <?= $total_items; ?>
                     </td>
-                    <td>
-                        <?= $sale['salesID']; ?>
+                    <td class="align-middle">
+                        <?php
+                        $subtotal = $sale['orderTotalPrice'];
+                        echo number_format($subtotal, 0, '.', '.');
+                        ?> IDR
                     </td>
-                    <td>
-                        <?= $sale['salesID']; ?>
-                    </td>
-                    <td>
+                    <td class="align-middle">
                         <?= $sale['orderDate']; ?>
                     </td>
-                    <td>
-                        <?= $sale['salesID']; ?>
+                    <td class="align-middle">
+                        <?= $sale['orderMethod']; ?>
+                        <?php
+                        $badge_color = ($sale['orderStatus'] == 'pending') ? 'badge-warning' : 'badge-success';
+                        ?>
+                        <div class="badge <?= $badge_color; ?>">
+                            <?= $sale['orderStatus']; ?>
+                        </div>
                     </td>
                 </tr>
             <?php endforeach; ?>
