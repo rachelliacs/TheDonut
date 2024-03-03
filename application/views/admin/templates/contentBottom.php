@@ -2,6 +2,46 @@
 </div>
 </section>
 <script>
+    $(document).ready(function () {
+        $('#salesfilter').change(function () {
+            var month = $(this).val();
+            $.ajax({
+                url: '<?php echo base_url('admin/salesList/filter'); ?>',
+                type: 'post',
+                data: { month: month },
+                success: function (response) {
+                    $('#salesTable tbody').html(response);
+                }
+            });
+        });
+
+        $('#printButton').click(function () {
+            // Logic to print sales list
+        });
+    });
+</script>
+<script>
+    // JavaScript function to trigger PDF download
+    function printSales() {
+        var selectedMonth = document.getElementById('salesfilter').value;
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'controller/generatePDF', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.responseType = 'blob'; // Set response type to blob
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                var blob = new Blob([xhr.response], { type: 'application/pdf' });
+                var link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = 'sales_report.pdf';
+                link.click();
+            }
+        };
+        xhr.send('salesfilter=' + selectedMonth);
+    }
+
+</script>
+<script>
     // DELETES
     function confirmDeleteUser(userID) {
         if (confirm('Are you sure you want to delete this user?')) {

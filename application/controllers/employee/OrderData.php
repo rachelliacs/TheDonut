@@ -27,36 +27,28 @@ class OrderData extends CI_Controller
         }
         $data['StoreName'] = $StoreName;
 
-        $query = $this->db->get('tb_sales');
-        if ($query) {
-            $data['sales'] = $query->result_array();
-        } else {
-            echo "Error retrieving data from the database.";
-        }
-
-        $this->db->select('tb_order.*, tb_user.*, tb_cart.*');
+        $this->db->select('tb_order.*, tb_user.*');
         $this->db->from('tb_order');
         $this->db->join('tb_user', 'tb_user.userID = tb_order.userID');
-        $this->db->join('tb_cart', 'tb_cart.cartID = tb_order.cartID');
 
         $query = $this->db->get();
         if ($query) {
-            $data['sales'] = $query->result_array();
+            $data['orders'] = $query->result_array();
         } else {
             echo "Error retrieving data from the database.";
         }
 
-        $this->db->select('tb_cart.*, tb_product.*, tb_user.*');
-        $this->db->from('tb_cart');
-        $this->db->join('tb_product', 'tb_product.productID = tb_cart.productID');
-        $this->db->join('tb_user', 'tb_user.userID = tb_cart.userID');
+        $query = $this->db->query("SHOW COLUMNS FROM tb_order WHERE Field = 'orderStatus'");
+        $row = $query->row();
+        $orderstatuses = explode("','", preg_replace("/(enum|set)\('(.+?)'\)/", "\\2", $row->Type));
+        // Pass enum values to view
+        $data['orderstatuses'] = $orderstatuses;
 
-        $query = $this->db->get();
-        if ($query) {
-            $data['carts'] = $query->result_array();
-        } else {
-            echo "Error retrieving data from the database.";
-        }
+        $query = $this->db->query("SHOW COLUMNS FROM tb_order WHERE Field = 'orderMethod'");
+        $row = $query->row();
+        $ordermethods = explode("','", preg_replace("/(enum|set)\('(.+?)'\)/", "\\2", $row->Type));
+        // Pass enum values to view
+        $data['ordermethods'] = $ordermethods;
 
         $query = $this->db->get('tb_product');
         if ($query) {
@@ -79,9 +71,25 @@ class OrderData extends CI_Controller
         $this->load->view('admin/templates/footer');
     }
 
+    public function update()
+    {
+        $id = $this->input->post('orderid');
+        $table = 'tb_order';
+        $data = array(
+            'orderMethod' => $this->input->post('ordermethod'),
+            'orderStatus' => $this->input->post('orderstatus')
+        );
+        $this->Data->updateData($table, 'orderID', $id, $data);
+        if ($this) {
+            redirect('employee/orderdata');
+        } else {
+            echo "Update failed.";
+        }
+    }
+
     public function delete()
     {
-        $productid = $this->input->post('orderID');
+        $orderid = $this->input->post('orderID');
         $this->load->model('Order');
         $this->Order->deleteOrder('tb_order', $orderid);
         redirect('employee/orderData');

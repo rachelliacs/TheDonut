@@ -88,6 +88,9 @@
         var productSellingPrice = $(this).data('productsellingprice');
         var productCategoryID = $(this).data('productcategoryid');
         var productCategoryName = $(this).data('productcategoryname');
+        var orderID = $(this).data('orderid');
+        var orderMethod = $(this).data('ordermethod');
+        var orderStatus = $(this).data('orderstatus');
 
         // Set data to the form fields
         $('#userid').val(userID);
@@ -108,6 +111,9 @@
         $('#productsellingprice').val(productSellingPrice);
         $('#productcategoryid').val(productCategoryID);
         $('#productcategoryname').val(productCategoryName);
+        $('#orderid').val(orderID);
+        $('#ordermethod').val(orderMethod);
+        $('#orderstatus').val(orderStatus);
 
         // Show the popup form
         $('#edit-popup').show();

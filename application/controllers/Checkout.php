@@ -70,10 +70,11 @@ class Checkout extends CI_Controller
                 // Format setiap produk ke dalam struktur yang sesuai dengan Midtrans Snap
                 $cartid = $product['cartID'];
                 $price = $product['productSellingPrice'] * 1000;
+                $cartquantity = $product['cartQuantity'];
                 $item = [
                     'id' => $cartid, // ID produk
                     'price' => $price, // Harga produk
-                    'quantity' => $product['cartQuantity'], // Jumlah produk
+                    'quantity' => $cartquantity, // Jumlah produk
                     'name' => $product['productName'] // Nama produk
                 ];
 
@@ -109,15 +110,18 @@ class Checkout extends CI_Controller
                 'orderID' => $orderid,
                 'userID' => $userid,
                 'cartID' => $cartid,
+                'cartQuantity' => $cartquantity,
                 'orderDate' => $transaction_time,
-                'orderTotalPrice' => $subtotal
+                'orderTotalPrice' => $subtotal,
+                'orderMethod' => 'transfer',
+                'orderStatus' => 'done',
             );
-
-            $this->db->insert('tb_order', $transaction);
 
             $data = [
                 'snapToken' => \Midtrans\Snap::getSnapToken($params)
             ];
+
+            $this->db->insert('tb_order', $transaction);
         }
 
         $this->Auth->check_customer(); // Memeriksa apakah pengguna adalah customer

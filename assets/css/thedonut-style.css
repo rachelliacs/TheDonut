@@ -169,10 +169,10 @@ button:focus, a:focus, input:focus {
 button,
 .btn,
 a.btn {
-    margin: 0px;
+    margin: 0px !important;
     border: none;
     min-height: 32px;
-    max-height: 32px;
+    /* max-height: 32px; */
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -596,6 +596,22 @@ input[type="number"] {
     flex-wrap: nowrap;
     align-items: stretch;
     overflow: hidden;
+}
+.btn-filter {
+    background-color: #007bff; /* Blue */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+.btn-filter:hover {
+    background-color: #0056b3; /* Darker blue */
 }
 /* 
 // END:: ADMIN PAGE STYLE
