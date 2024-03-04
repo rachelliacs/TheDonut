@@ -2,6 +2,125 @@
 </div>
 </section>
 <script>
+    var products = <?php echo json_encode($products); ?>;
+</script>
+
+<script>
+    function searchProducts(products) {
+
+        // Get the search query entered by the user
+        const searchQuery = document.getElementById('productSearch').value.trim().toLowerCase();
+
+        // If the search query is empty, display all products
+        if (searchQuery === '') {
+            // Show all products in the table (assuming products are stored in a JavaScript array)
+            displayAllProducts();
+            return;
+        }
+
+        // Filter products based on the search query
+        const filteredProducts = products.filter(product => {
+            // You can customize the search criteria based on your product data structure
+            return product.productName.toLowerCase().includes(searchQuery);
+        });
+
+        // Update the product table with the filtered products
+        updateProductTable(filteredProducts);
+    }
+
+    function displayAllProducts() {
+        // Show all products in the table
+        updateProductTable(products);
+    }
+
+    function updateProductTable(products) {
+        const selectedProducts = document.getElementById('selectedProducts');
+
+        // Clear the existing table rows
+        selectedProducts.innerHTML = '';
+
+        // Populate the table with the filtered products
+        products.forEach(product => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+            <td class="align-middle">${product.productID}</td>
+            <td class="align-middle">${product.productName}</td>
+            <td class="align-middle">${product.productStock}</td>
+            <td class="align-middle">${(product.productSellingPrice * 1).toFixed(3)
+                } IDR   </td >
+        <td class="align-middle"><button onclick="addProductToOrder('${product.productID}', '${product.productName}')">Add</button></td>
+        `;
+            selectedProducts.appendChild(row);
+        });
+    }
+
+    function getProductPrice(productID) {
+        // Make an AJAX request to fetch the product price from the server
+        // Replace 'your_backend_endpoint' with the actual endpoint on your server to retrieve the product price
+        // Make sure your backend returns the price in the response
+        return new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', `employee / orderManual ? productID = ${productID}`);
+            xhr.onload = () => {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    const productPrice = response.price; // Assuming the response contains the product price
+                    resolve(productPrice);
+                } else {
+                    reject('Error retrieving product price');
+                }
+            };
+            xhr.onerror = () => {
+                reject('Error retrieving product price');
+            };
+            xhr.send();
+        });
+    }
+
+    function addProductToOrder(productID, productName) {
+        // Check if the product is already in the list
+        if (!document.getElementById(`quantity_${productID}`)) {
+            // Add the selected product to the target table below
+            const targetTable = document.getElementById('customerPicks');
+            const targetRow = targetTable.insertRow();
+            const productSellingPrice = getProductPrice(productID);
+            targetRow.innerHTML = `
+            <td class= "align-middle"> ${productID}</td>
+            <td class="align-middle">${productName}</td>
+            <td class="align-middle"><input type="number" id="quantity_${productID}_target" value="1" min="1"></td>
+            <td class="align-middle">${(productSellingPrice * 1).toFixed(3)} IDR</td>
+            <td class="align-middle"><button onclick="removeProduct('${productID}')">Remove</button></td>
+        `;
+        }
+    }
+
+    function removeProduct(productID) {
+        // Remove the selected product from the "Customer Picks" table
+        const row = document.getElementById(`quantity_${productID}_target`).parentNode.parentNode;
+        row.parentNode.removeChild(row);
+        updateTotalAmount();
+    }
+
+    function updateTotalAmount() {
+        // Calculate and update the total amount
+        const rows = document.getElementById('customerPicks').getElementsByTagName('tr');
+        let totalAmount = 0;
+        for (let i = 0; i < rows.length; i++) {
+            const quantity = parseInt(rows[i].getElementsByTagName('input')[0].value, 10);
+            const productID = rows[i].getElementsByTagName('td')[0].textContent; // Get the product ID
+            const productPrice = getProductPrice(productID); // Get the price of the product
+            totalAmount += quantity * productPrice;
+        }
+        document.getElementById('totalAmount').textContent = totalAmount.toFixed(2); // Display the total amount with 2 decimal places
+    }
+
+    function submitOrder() {
+        // Implement logic to submit the order with selected products and quantities
+        // This may involve sending an AJAX request to the server
+        // Display success/failure message to the user
+    }
+</script>
+<script>
     // DELETES
     function confirmDeleteUser(userID) {
         if (confirm('Are you sure you want to delete this user?')) {
@@ -144,7 +263,7 @@
 </script>
 
 <!-- Local JS -->
-<script src="<?= base_url(); ?>application/assets/js/script.js"></script>
+<!-- <script src="<?= base_url(); ?>application/assets/js/script.js"></script> -->
 <script src="<?= base_url(); ?>templates/Ultras/js/jquery-1.11.0.min.js"></script>
 <script src="<?= base_url(); ?>templates/Ultras/js/plugins.js"></script>
 <script src="<?= base_url(); ?>templates/Ultras/js/script.js"></script>

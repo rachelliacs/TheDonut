@@ -22,7 +22,7 @@
     </div>
     <table id="salesTable" class="table">
         <form method="post" action="<?php echo base_url('admin/salesData'); ?>">
-            <select name="salesfilter" id="salesfilter" class="btn btn-filter form-control"
+            <select name="salesfilter" id="salesfilter" class="btn btn-primary btn-filter form-control"
                 onchange="this.form.submit()">
                 <option value="">Filter</option>
                 <?php foreach ($months as $month): ?>

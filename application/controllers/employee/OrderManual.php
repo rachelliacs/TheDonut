@@ -62,7 +62,7 @@ class OrderManual extends CI_Controller
 
         $this->load->view('employee/templates/header', $data);
         $this->load->view('employee/templates/contentTop');
-        $this->load->view('employee/pages/orderManual');
+        $this->load->view('employee/pages/orderManual', $data);
         $this->load->view('employee/templates/contentBottom');
         $this->load->view('employee/templates/footer');
     }

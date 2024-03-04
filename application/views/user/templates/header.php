@@ -40,7 +40,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     if (!$this->session->userdata('logged_in') && ($current_page != 'authentication' && $current_page != 'register')) {
                         ?>
                         <div class="form-buttons">
-                            <a href="<?= base_url(); ?>shoppingcart" class=""><svg width="24" height="24"
+                            <a href="<?= base_url(); ?>shoppingcart" class="nav-icon"><svg width="24" height="24"
                                     viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M11 27C11.5523 27 12 26.5523 12 26C12 25.4477 11.5523 25 11 25C10.4477 25 10 25.4477 10 26C10 26.5523 10.4477 27 11 27Z"
@@ -62,7 +62,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <?php } ?>
                     <?php if ($this->session->userdata('logged_in') && ($current_page != 'authentication' && $current_page != 'register')) { ?>
                         <div class="form-buttons">
-                            <a href="<?= base_url(); ?>shoppingcart" class="nav-item"><svg width="24" height="24"
+                            <a href="<?= base_url(); ?>shoppingcart" class="nav-icon"><svg width="24" height="24"
                                     viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M11 27C11.5523 27 12 26.5523 12 26C12 25.4477 11.5523 25 11 25C10.4477 25 10 25.4477 10 26C10 26.5523 10.4477 27 11 27Z"

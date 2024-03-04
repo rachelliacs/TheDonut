@@ -6,6 +6,7 @@ class Checkout extends CI_Controller
         parent::__construct();
         $this->load->model('Auth');
         $this->load->model('Data');
+        $this->load->model('Cart');
         $this->load->library('session');
         $this->load->config('midtrans');
         $this->load->helper('url');
@@ -39,7 +40,6 @@ class Checkout extends CI_Controller
             $dsn = "mysql:host=localhost;dbname=db_chasierapp";
             $dsnusername = "thedonutadmin";
             $dsnpassword = "rESO1A";
-
 
             try {
                 $conn = new PDO($dsn, $dsnusername, $dsnpassword);
