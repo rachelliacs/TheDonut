@@ -31,6 +31,15 @@
         </div>
     </div>
 </footer>
+<script src="http://localhost/thedonut/upup.min.js"></script>
+<script>
+UpUp.debug();
+UpUp.start({
+  'content-url': 'http://localhost/thedonut/',
+  'assets': ['http://localhost/thedonut/assets/css/thedonut-style.css'],
+  'service-worker-url': 'http://localhost/thedonut/upup.sw.min.js'
+});
+</script>
 <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-eaP5uTo2Ar44qT5R"></script>
     <script type="text/javascript">
       document.getElementById('pay-button').onclick = function(){
@@ -52,74 +61,6 @@
       };
     </script>
 <script>
-    // EDITS
-    // Event listener for edit button click
-    $('.edit-btn').click(function () {
-        // Get data from the clicked edit button
-        var productImage = $(this).data('productimage');
-        $('#productimage').attr('src', productImage); // Set image source
-
-        var userID = $(this).data('userid');
-        var userName = $(this).data('username');
-        var userStatus = $(this).data('userstatus');
-        var userEmail = $(this).data('useremail');
-        var userPhone = $(this).data('userphone');
-        var userPassword = $(this).data('userpassword');
-        var storeID = $(this).data('storeid');
-        var storeName = $(this).data('storename');
-        var storeLogo = $(this).data('storelogo');
-        var storeDesc = $(this).data('storedesc');
-        var productID = $(this).data('productid');
-        var productName = $(this).data('productname');
-        var productDesc = $(this).data('productdesc');
-        var productStock = $(this).data('productstock');
-        var productPrice = $(this).data('productprice');
-        var productSellingPrice = $(this).data('productsellingprice');
-        var productCategoryID = $(this).data('productcategoryid');
-        var productCategoryName = $(this).data('productcategoryname');
-
-        // Set data to the form fields
-        $('#userid').val(userID);
-        $('#username').val(userName);
-        $('#userstatus').val(userStatus);
-        $('#useremail').val(userEmail);
-        $('#userphone').val(userPhone);
-        $('#userpassword').val(userPassword);
-        $('#storeid').val(storeID);
-        $('#storename').val(storeName);
-        $('#storelogo').val(storeLogo);
-        $('#storedesc').val(storeDesc);
-        $('#productid').val(productID);
-        $('#productname').val(productName);
-        $('#productdesc').val(productDesc);
-        $('#productstock').val(productStock);
-        $('#productprice').val(productPrice);
-        $('#productsellingprice').val(productSellingPrice);
-        $('#productcategoryid').val(productCategoryID);
-        $('#productcategoryname').val(productCategoryName);
-
-        // Show the popup form
-        $('#edit-popup').show();
-    });
-
-    $('.add-btn').click(function () {
-        // Show the popup form
-        $('#add-popup').show();
-    });
-
-    // Event listener for close button click
-    $('#close-edit-popup').click(function () {
-        // Hide the popup form
-        $('#edit-popup').hide();
-    });
-
-    // Event listener for close button click
-    $('#close-add-popup').click(function () {
-        // Hide the popup form
-        $('#add-popup').hide();
-    });
-</script>
-<script>
     $(document).ready(function () {
         // Click event handler for small images
         $('.small-image').click(function () {
@@ -131,6 +72,18 @@
         });
     });
 </script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/serviceworker.js').then(function(registration) {
+      console.log('ServiceWorker terdaftar dengan ruang lingkup: ', registration.scope);
+    }, function(err) {
+      console.log('Pendaftaran ServiceWorker gagal: ', err);
+    });
+  });
+}
+</script>
+<!-- <script src="assets/js/register-service-worker.js"></script> -->
 <script>
     $(document).ready(function () {
         // Handle small image click

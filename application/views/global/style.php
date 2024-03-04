@@ -24,6 +24,7 @@
 <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/thedonut-normalize.css">
 <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/thedonut-vendor.css">
 <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/thedonut-style.css">
+<link rel="manifest" href="http://localhost/thedonut/assets/js/manifest.json">
 
 <!-- Local JS -->
 <script src="<?= base_url(); ?>assets/js/modernizr.js"></script>

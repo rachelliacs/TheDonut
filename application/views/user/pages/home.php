@@ -1,20 +1,20 @@
 <section id="hero" class="section section-hero">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-10">
-				<h2 class="banner-title">
-					<?php foreach ($storedatas as $storedata): ?>
-						<?php echo $storedata['storeDesc']; ?>
-					<?php endforeach; ?>
-				</h2>
-				<div class="btn-wrap">
-					<a href="#selling-products" class="btn btn-light d-flex align-items-center" tabindex="0">Read Menu
-						<i class="icon icon-arrow-io"></i>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <h2 class="banner-title">
+                    <?php foreach ($storedatas as $storedata): ?>
+                        <?php echo $storedata['storeDesc']; ?>
+                    <?php endforeach; ?>
+                </h2>
+                <div class="btn-wrap">
+                    <a href="#selling-products" class="btn btn-light d-flex align-items-center" tabindex="0">Read Menu
+                        <i class="icon icon-arrow-io"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <section id="selling-products" class="product-store padding-large">
 	<div class="container">

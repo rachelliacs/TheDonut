@@ -1,0 +1,23 @@
+{
+    "name": "TheDonut",
+    "short_name": "Donut",
+    "description": "Aplikasi kasir untuk toko Donat",
+    "icons": [
+      {
+        "src": "/thedonut/assets/js/favicon.png",
+        "type": "image/png",
+        "sizes": "144x144"
+      }
+    ],
+    "start_url": "/thedonut",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ff8800",
+    "orientation": "portrait",
+    "scope": "/",
+    "lang": "en",
+    "prefer_related_applications": false,
+    "related_applications": [],
+    "splash_pages": null
+  }
+  
