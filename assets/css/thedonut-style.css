@@ -668,6 +668,22 @@ input[type="number"] {
 .product-item .item-price {
     font-size: inherit;
 }
+.cart-count {
+    width: 20px;
+    height: 20px;
+    font-size: x-small;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    background-color: white;
+    BORDER-RADIUS: 50%;
+    justify-content: center;
+    align-self: center;
+    justify-content: center;
+}
+.nav-item {
+    display: flex;
+    gap: 4px;
+}
 /* 
 // END:: HOME PAGE STYLE
 */

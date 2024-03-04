@@ -8,6 +8,7 @@ class Dashboard extends CI_Controller
                 parent::__construct();
                 $this->load->model('Auth');
                 $this->load->model('Data');
+                $this->load->model('Cart');
                 $this->load->library('session');
         }
 
@@ -45,6 +46,13 @@ class Dashboard extends CI_Controller
                 } else {
                         echo "Error retrieving data from the database.";
                 }
+
+                $userid = $this->session->userdata('userID');
+                // Get the count of items in the cart
+                $cart_count = $this->Cart->countItems($userid); // This function should return the count of items
+
+                // Pass the count to the header view
+                $data['cart_count'] = $cart_count;
 
                 $this->load->view('user/templates/header', $data);
                 $this->load->view('user/pages/home', $data);

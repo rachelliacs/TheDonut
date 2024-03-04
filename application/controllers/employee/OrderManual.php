@@ -69,29 +69,37 @@ class OrderManual extends CI_Controller
 
     public function add()
     {
-        $data = array(
-            'userID' => $this->input->post('userid'),
-            'orderStatus' => $this->input->post('orderstatus'),
-            'orderMethod' => $this->input->post('ordermethod')
+        $userid = $this->input->post('userid');
+        $orderStatus = 'done';
+        $orderMethod = 'cash';
+        $selectedProducts = $this->input->post('products'); // Array of selected product IDs
+        $orderTotalItems = $this->input->post('orderTotalItem'); // Array of corresponding quantities
+
+        // Insert order into the database
+        $orderData = array(
+            'userID' => $userid,
+            'orderStatus' => $orderStatus,
+            'orderMethod' => $orderMethod
         );
+        $this->db->insert('tb_order', $orderData);
 
-        $this->db->insert('tb_order', $data);
+        $orderid = rand();
+        $transaction_time = date('Y-m-d H:i:s');
 
-        $selected_products = $this->input->post('product');
-        $orderTotalItems = $this->input->post('orderTotalItem');
-
-        if (!empty($selected_products)) {
-            foreach ($selected_products as $index => $productID) {
+        // Insert order items into the database
+        if (!empty($selectedProducts)) {
+            foreach ($selectedProducts as $index => $productid) {
+                $quantity = $orderTotalItems[$index];
                 $orderItemData = array(
-                    'orderID' => $this->db->insert_id(),
-                    'productID' => $productID,
-                    'quantity' => $orderTotalItems[$index]
+                    'orderID' => $orderid,
+                    'userID' => $userid,
+                    'cartQuantity' => $quantity,
+                    'orderDate' => $transaction_time
                 );
-                $this->db->insert('tb_order_items', $orderItemData);
+                $this->db->insert('tb_order', $orderItemData);
             }
         }
-
-        redirect('admin/orderManual');
+        redirect('employee/orderManual');
     }
 
 }

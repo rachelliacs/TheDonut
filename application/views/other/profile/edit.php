@@ -1,7 +1,7 @@
 <section class="section padding-small">
     <div class="container">
         <?= validation_errors(); ?>
-        <form id="edit-form" method="post" action="<?= base_url(); ?>profile/update">
+        <form id="edit-form" method="post" action="<?= base_url(); ?>profile/updatedata">
             <div class="form-content-wrap mb-3">
                 <div class="mt-4 mb-4">
                     <h1 class="mb-4 text-center">
@@ -13,7 +13,7 @@
                             <img class="user-image" src="<?= base_url(); ?>assets/img/thedonut-user.jpg"
                                 alt="User Image">
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="form-input-group">
                                 <input type="hidden" name="userid" id="userid" value="">
                                 <div class="form-input">
@@ -38,12 +38,12 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-3"></div>
                     </div>
                 </div>
             </div>
             <div class="form-buttons">
-                <button type="submit" class="btn btn-primary">
-                    <?= $title; ?>
+                <button type="submit" class="btn btn-primary">Edit Profile
                 </button>
             </div>
         </form>

@@ -18,4 +18,13 @@ class Cart extends CI_Model
         return $this->db->get_where('tb_cart', array('userID' => $userid))->result_array();
     }
 
+    public function countItems($userid)
+    {
+        $this->db->select('COUNT(*) as count');
+        $this->db->from('tb_cart');
+        $this->db->where('userID', $userid);
+        $query = $this->db->get();
+        $result = $query->row_array();
+        return $result['count'];
+    }
 }

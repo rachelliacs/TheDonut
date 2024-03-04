@@ -138,6 +138,13 @@ class Checkout extends CI_Controller
         }
         $data['StoreName'] = $StoreName;
 
+        $userid = $this->session->userdata('userID');
+        // Get the count of items in the cart
+        $cart_count = $this->Cart->countItems($userid); // This function should return the count of items
+
+        // Pass the count to the header view
+        $data['cart_count'] = $cart_count;
+
         $this->load->view('user/templates/header', $data);
         $this->load->view('user/pages/checkout', $data);
         $this->load->view('user/templates/footer');

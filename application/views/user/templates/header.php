@@ -54,12 +54,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         d="M10 18H25.59C25.7056 18.0001 25.8177 17.9601 25.9072 17.8868C25.9966 17.8135 26.0579 17.7115 26.0806 17.5981L27.8806 8.59813C27.8951 8.52555 27.8934 8.45066 27.8755 8.37886C27.8575 8.30705 27.8239 8.24012 27.7769 8.1829C27.73 8.12567 27.6709 8.07959 27.604 8.04796C27.5371 8.01633 27.464 7.99995 27.39 8H8"
                                         stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
+                                <div class="cart-count">
+                                    <?php echo $cart_count; ?>
+                                </div>
                             </a>
                         </div>
                     <?php } ?>
                     <?php if ($this->session->userdata('logged_in') && ($current_page != 'authentication' && $current_page != 'register')) { ?>
                         <div class="form-buttons">
-                            <a href="<?= base_url(); ?>shoppingcart" class=""><svg width="24" height="24"
+                            <a href="<?= base_url(); ?>shoppingcart" class="nav-item"><svg width="24" height="24"
                                     viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M11 27C11.5523 27 12 26.5523 12 26C12 25.4477 11.5523 25 11 25C10.4477 25 10 25.4477 10 26C10 26.5523 10.4477 27 11 27Z"
@@ -73,6 +76,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         d="M10 18H25.59C25.7056 18.0001 25.8177 17.9601 25.9072 17.8868C25.9966 17.8135 26.0579 17.7115 26.0806 17.5981L27.8806 8.59813C27.8951 8.52555 27.8934 8.45066 27.8755 8.37886C27.8575 8.30705 27.8239 8.24012 27.7769 8.1829C27.73 8.12567 27.6709 8.07959 27.604 8.04796C27.5371 8.01633 27.464 7.99995 27.39 8H8"
                                         stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
+                                <div class="cart-count">
+                                    <?php echo $cart_count; ?>
+                                </div>
                             </a>
                             <div class="dropdown">
                                 <svg class="dropdown-toggle" width="24" height="24" viewBox="0 0 32 32" fill="none"
@@ -95,11 +101,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         </div>
                                         <div class=" dropdown-divider mt-3 mb-2"></div>
                                     </div>
-                                    <a aria-selected="false" class="dropdown-item" role="button" tabindex="0"
+                                    <a aria-selected="false" class="dropdown-item edit-btn" role="button" tabindex="0"
                                         href="<?= base_url(); ?>profile/update"><i class="fe fe-user me-2"></i> Edit
                                         Profile</a>
-                                    <a class="dropdown-item" role="button" tabindex="0" href="authentication/logout"><i
-                                            class="fe fe-power me-2"></i>Log Out</a>
+                                    <a class="dropdown-item" role="button" tabindex="0"
+                                        href="<?= base_url(); ?>authentication/logout"><i class="fe fe-power me-2"></i>Log
+                                        Out</a>
                                 </div>
                             </div>
                             <?php if ($this->session->flashdata('logout_message')) { ?>
