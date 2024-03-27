@@ -1,71 +1,48 @@
 ###################
-What is CodeIgniter
+Chasieria (Ex. TheDonut)
 ###################
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+Simple Cashier System to streamline the process of managing sales transactions in various retail environments. Built using `CodeIgniter 3` Framework.
 
 *******************
 Release Information
 *******************
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+This repo is still under constructions.
 
 **************************
-Changelog and New Features
+Key Features
 **************************
 
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
+User-Friendly Interface: The interface is intuitive and easy to navigate, ensuring minimal training time for cashiers.
 
-*******************
-Server Requirements
-*******************
+Product Database: Maintain a comprehensive database of products with details such as name, price, and quantity in stock.
 
-PHP version 5.6 or newer is recommended.
+Multiple Payment Options: We apply Midtrans that support various payment methods including cash, credit/debit cards, and digital wallets to accommodate diverse customer preferences.
 
-It should work on 5.3.7 as well, but we strongly advise you NOT to run
-such old versions of PHP, because of potential security and performance
-issues, as well as missing features.
+Transaction Management: Enable cashiers to quickly add items to a transaction, calculate totals, apply discounts if necessary, and process payments efficiently. (under constructions)
+
+Sales Reporting: Generate reports summarizing daily, weekly, or monthly sales, providing valuable insights into performance and trends. (under constructions)
+
+Inventory Management: Automatically update inventory levels with each sale to ensure accurate stock tracking and timely replenishment. (under constructions)
+
+Security Measures: Implement security measures such as user authentication and transaction logging to safeguard sensitive data and prevent unauthorized access. (under constructions)
 
 ************
 Installation
 ************
 
-Please see the `installation section <https://codeigniter.com/userguide3/installation/index.html>`_
-of the CodeIgniter User Guide.
+Download this repo
+
+Change the base url in `/application/config/config.php`
 
 *******
-License
+Team
 *******
 
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
-
-*********
-Resources
-*********
-
--  `User Guide <https://codeigniter.com/docs>`_
--  `Contributing Guide <https://github.com/bcit-ci/CodeIgniter/blob/develop/contributing.md>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <http://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community Slack Channel <https://codeigniterchat.slack.com>`_
-
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
-
-***************
-Acknowledgement
-***************
-
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
+Analyst       : `Wong Wei Hong`
+Design UI/UX  : `Wong Wei Hong`
+Transaction   : `Nadira Aghnia`
+Mobile config : `Nadira Aghnia`
+Web Front     : `Rachellia Citra`
+Web Back      : `Rachellia Citra`

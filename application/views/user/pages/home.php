@@ -22,13 +22,13 @@
 			<h2 class="section-title">Our products</h2>
 		</div>
 		<ul class="tabs list-unstyled">
-			<li data-tab-target="#all" class="active tab">All needs</li>
+			<li data-tab-target="#all" class="active tab text-nowrap">All needs</li>
 			<?php foreach ($productcategories as $productcategory): ?>
 				<?php
 				$productCategoryName = $productcategory['productCategoryName'];
 				$words = explode(' ', $productCategoryName);
 				?>
-				<li data-tab-target="#<?php echo end($words); ?>" class="tab">
+				<li data-tab-target="#<?php echo end($words); ?>" class="tab text-nowrap">
 					<?php echo $productcategory['productCategoryName']; ?>
 				</li>
 			<?php endforeach; ?>

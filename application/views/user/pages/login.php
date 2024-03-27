@@ -2,7 +2,7 @@
     <div class="container">
         <form method="post" action="<?= base_url(); ?>authentication/login" class="form">
             <div class="form-content-wrap">
-                <h1>Login</h1>
+                <h1 class="text-center">Login</h1>
                 <div class="form-input-group">
                     <div class="form-input">
                         <label for="username" class="form-label">User Name</label>
@@ -15,6 +15,7 @@
                             placeholder="Enter your password">
                     </div>
                 </div>
+                <a href="<?= base_url(); ?>reset" class="text-right" style="font-size: small;">Forgot Password?</a>
                 <?php
                 if (validation_errors()) {
                     echo '<div class="alert alert-danger" role="alert">';

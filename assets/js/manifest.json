@@ -1,0 +1,22 @@
+{
+  "name": "Chasieria",
+  "short_name": "Chasieria",
+  "description": "Aplikasi kasir untuk pertokoan",
+  "icons": [
+    {
+      "src": "https://jyfur65.localto.net/thedonut/assets/js/favicon.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    }
+  ],
+  "start_url": "https://jyfur65.localto.net/thedonut/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff8800",
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "en",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "splash_pages": null
+}

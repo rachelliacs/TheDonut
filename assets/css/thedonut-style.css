@@ -1,3 +1,16 @@
+/* ROOT */
+:root {
+    --bp-xl: 1024px;
+    --bp-lg: 768px;
+    --bp-md: 576px;
+    --bp-sm: 425px;
+}
+
+/* @media only screen and (max-width: var(--bp-sm)) {
+    
+}   */
+
+
 /* 
 // START:: TAG STYLE
 */
@@ -225,36 +238,7 @@ a.btn svg {
     margin-bottom: 16px !important;
 }
 
-/* NAVIGATION */
-.primary-nav {
-    padding: 16px 0px;
-    background-color: #D5B4B4;
-    color: white !important;
-}
-.primary-nav img {
-    max-height: 24px;
-}
-.nav {
-    flex-direction: column;
-    flex-wrap: nowrap;
-}
-.nav-link {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    column-gap: 24px;
-    color: white;
-    padding: 12px 24px;
-    font-size: small;
-    text-transform: uppercase;
-}
-.nav-link i {
-    margin-left: auto;
-}
-.nav-link:hover {
-    background-color: #F5EBEB80;
-    color: white;
-}
+/*  */
 .profile {
     display: flex;
     align-items: center;
@@ -360,8 +344,11 @@ td {
 }
 .form-buttons {
     display: flex;
-    justify-content: flex-end;
+    justify-content: stretch;
     align-items: center;
+}
+.form-buttons .btn {
+    width: 100%;
 }
 .form-input-radio {
     display: flex;
@@ -626,6 +613,7 @@ input[type="number"] {
     display: flex;
     align-items: flex-end;
     background-image: url(../img/thedonut-hero.png);
+    background-position: center;
     background-size: cover;
     color: #F5EBEB !important;
 }
@@ -710,3 +698,100 @@ input[type="number"] {
 /* 
 // END:: NEW BOOTSTRAP STYLE
 */
+
+/* NAVIGATION */
+.primary-nav {
+    width: 100%;
+    padding: 16px 0px;
+    background-color: #D5B4B4;
+    color: white !important;
+    z-index: 100;
+}
+.primary-nav img {
+    max-height: 24px;
+}
+.nav {
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+.nav-link {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 24px;
+    color: white;
+    padding: 12px 24px;
+    font-size: small;
+    text-transform: uppercase;
+}
+.nav-link i {
+    margin-left: auto;
+}
+.nav-link:hover {
+    background-color: #F5EBEB80;
+    color: white;
+}
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar-logo {
+    max-height: 24px;
+    width: auto;
+}
+.navbar-content {
+    display: flex;
+    gap: 16px;
+}
+
+/* RESPONSIVE STYLE */
+/* --bp-xl: 1024px;
+    --bp-lg: 768px;
+    --bp-md: 576px;
+    --bp-sm: 425px; */
+@media only screen and (max-width: var(--bp-xl)) {
+    .navbar-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+@media only screen and (max-width: var(--bp-lg)) {
+    .container {
+        padding: 0 64px !important;
+    }
+    .section.section-hero {
+        min-height: 0px !important;
+    }
+    .product-detail .product-title {
+        font-size: small !important; 
+        margin-bottom: 4px !important;
+    }
+    .primary-nav {
+        width: 100%;
+        padding: 20px 0px;
+        color: #61677A !important;
+        position: fixed;
+        bottom: 0;
+    }
+    .navbar-logo {
+        display: none;
+    }
+    .cart-count {
+        display: none;
+    }
+    footer {
+        display: none;
+    }
+} 
+@media only screen and (max-width: var(--bp-md)) {
+    .container {
+        padding: 0 48px !important;
+    }
+}
+@media only screen and (max-width: var(--bp-sm)) {
+    .container {
+        padding: 0 24px !important;
+    }
+}

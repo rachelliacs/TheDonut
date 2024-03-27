@@ -87,7 +87,8 @@
 										<?php foreach ($carts as $cart): ?>
 											<?php if ($cart['userID'] == $this->session->userdata('userID')): ?>
 												<tr>
-													<td>
+													<td class="text-nowrap">
+														<?= $cart['cartQuantity']; ?>
 														<?= $cart['productName']; ?>
 													</td>
 													<td class="text-right">

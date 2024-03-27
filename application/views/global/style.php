@@ -33,4 +33,6 @@
 <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
     data-client-key="SB-Mid-client-4Fvl68M5QK7M-sIx">
     </script>
-<!--  -->
+
+<!-- Local json -->
+<link rel="manifest" href="<?= base_url(); ?>assets/js/manifest.json">
