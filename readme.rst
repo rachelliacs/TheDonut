@@ -1,5 +1,7 @@
 ###################
+
 Chasieria (Ex. TheDonut)
+
 ###################
 
 Simple Cashier System to streamline the process of managing sales transactions in various retail environments. Built using `CodeIgniter 3` Framework.
